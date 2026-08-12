@@ -6,7 +6,8 @@
     ['quick-quiz.html','🧠','الاختبار السريع'],
     ['ai.html','🤖','BTEC AI'],
     ['student-dashboard.html','📊','لوحة الطالب'],
-    ['sources.html','🔗','المصادر الرسمية']
+    ['sources.html','🔗','المصادر الرسمية'],
+    ['top-students.html','🏆','أوائل التخصصات']
   ];
   const homeSections=[
     ['about','📘','عن نظام BTEC'],
@@ -80,6 +81,23 @@
     menu.setAttribute('aria-hidden','false');
     chevron.textContent='⌃';
   }
+
+  // Shared light/dark mode across all pages.
+  const themeBtn = sidebar.querySelector('#themeBtn');
+  const savedTheme = localStorage.getItem('btecjo-theme') || 'light';
+  document.body.classList.toggle('dark', savedTheme === 'dark');
+  const syncThemeButton = () => {
+    const dark = document.body.classList.contains('dark');
+    themeBtn.textContent = dark ? '☀️' : '🌙';
+    themeBtn.title = dark ? 'الوضع النهاري' : 'الوضع الليلي';
+    themeBtn.setAttribute('aria-label', dark ? 'الوضع النهاري' : 'الوضع الليلي');
+  };
+  syncThemeButton();
+  themeBtn.addEventListener('click',()=>{
+    const dark = document.body.classList.toggle('dark');
+    localStorage.setItem('btecjo-theme', dark ? 'dark' : 'light');
+    syncThemeButton();
+  });
 
   if("serviceWorker" in navigator){ window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{})); }
 })();

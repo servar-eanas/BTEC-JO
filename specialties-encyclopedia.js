@@ -34,6 +34,47 @@ function render(){
     </article>`).join("") : `<div class="panel" style="grid-column:1/-1;text-align:center">ما لقينا تخصص مطابق لبحثك.</div>`;
 }
 
+window.toggleFavoriteSpecialty = function(id, name){
+  const key = "btecjo-favorites";
+  let list = [];
+  try {
+    const parsed = JSON.parse(localStorage.getItem(key) || "[]");
+    list = Array.isArray(parsed) ? parsed : [];
+  } catch {
+    list = [];
+  }
+
+  const idx = list.findIndex(item => {
+    if (typeof item === "string") return item === name || item === id;
+    return item && (item.id === id || item.name === name);
+  });
+
+  if (idx >= 0) {
+    list.splice(idx, 1);
+    localStorage.setItem(key, JSON.stringify(list));
+  } else {
+    list.push({ id, name, type: "specialty" });
+    localStorage.setItem(key, JSON.stringify(list));
+  }
+
+  updateFavoriteButton(id);
+};
+
+function updateFavoriteButton(id){
+  const key = "btecjo-favorites";
+  let list = [];
+  try {
+    const parsed = JSON.parse(localStorage.getItem(key) || "[]");
+    list = Array.isArray(parsed) ? parsed : [];
+  } catch { list = []; }
+  const saved = list.some(item => item && typeof item === "object" ? item.id === id : false);
+  const btn = document.querySelector('.favorite-specialty');
+  if (btn) {
+    btn.textContent = saved ? "★ محفوظ بالمفضلة" : "⭐ حفظ في المفضلة";
+    btn.classList.toggle("is-favorite", saved);
+  }
+}
+
 window.openSpecialty=function(id){
   const s=DATA.find(x=>x.id===id); if(!s) return;
   detail.innerHTML=`
@@ -73,7 +114,7 @@ window.openSpecialty=function(id){
     </section>
     <div class="source"><b>المصدر/مرجع المجال:</b> ${s.official}<br>للمعلومات الرسمية، راجع مواصفة Pearson الخاصة بالمؤهل وتحقق من البرنامج المطبق في مدرستك.</div>
   `;
-  drawer.classList.add("show"); drawer.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden";
+  drawer.classList.add("show"); drawer.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; updateFavoriteButton(s.id);
 };
 
 window.toggleUnit=function(btn){btn.parentElement.classList.toggle("opened")};

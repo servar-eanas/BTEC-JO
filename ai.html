@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTEC JO AI | مساعد BTEC</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="ai.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="navigation.css">
+<link rel="icon" type="image/svg+xml" href="../assets/btec-jo-logo.svg">
+<meta name="theme-color" content="#0b1220">
+</head>
+<body class="ai-page ai-chat-only">
+<script src="navigation.js"></script>
+<div id="scrollProgress"></div>
+<main>
+<section id="assistant" class="section ai-section">
+<div class="container ai-layout">
+<aside class="question-panel">
+<div class="panel-title"><i class="fa-solid fa-bolt"></i><div><b>أسئلة جاهزة</b><small>اضغط والسؤال يجاوبك مباشرة</small></div></div>
+<div class="question-group"><h4>الواجبات والمعايير</h4><button class="q-btn" data-q="شو هو نظام الواجبات في BTEC؟"><i class="fa-solid fa-clipboard-list"></i> شو هو نظام الواجبات؟</button><button class="q-btn" data-q="كيف أحقق معيار P في واجب BTEC؟"><i class="fa-solid fa-check"></i> كيف أحقق P؟</button><button class="q-btn" data-q="شو الفرق بين P و M و D؟"><i class="fa-solid fa-layer-group"></i> الفرق بين P M D؟</button><button class="q-btn" data-q="كيف أفهم فعل Explain أو Analyse في المعيار؟"><i class="fa-solid fa-language"></i> كيف أفهم أفعال المعيار؟</button></div>
+<div class="question-group"><h4>الدراسة والنجاح</h4><button class="q-btn" data-q="شو الأشياء اللي ممكن تخلي طالب BTEC ما ينجح؟"><i class="fa-solid fa-triangle-exclamation"></i> أسباب عدم النجاح؟</button><button class="q-btn" data-q="هل BTEC فيه امتحان؟"><i class="fa-solid fa-pen"></i> هل فيه امتحان؟</button><button class="q-btn" data-q="كيف بكون نظام الدراسة الأكاديمي في BTEC؟"><i class="fa-solid fa-school"></i> نظام الدراسة الأكاديمي</button><button class="q-btn" data-q="شو الشهادات اللي ممكن يحصل عليها الطالب بعد التخرج؟"><i class="fa-solid fa-certificate"></i> الشهادات بعد التخرج</button></div>
+<div class="question-group"><h4>المستقبل</h4><button class="q-btn" data-q="شو فرص طالب BTEC بعد التخرج؟"><i class="fa-solid fa-briefcase"></i> فرص بعد التخرج</button><button class="q-btn" data-q="هل أقدر أكمل جامعة بعد BTEC؟"><i class="fa-solid fa-university"></i> الجامعة بعد BTEC</button><button class="q-btn" data-q="هل BTEC معترف فيه خارج الأردن؟"><i class="fa-solid fa-globe"></i> الاعتراف خارج الأردن</button></div>
+</aside><div class="chat-card">
+<div class="chat-head"><div class="ai-avatar"><i class="fa-solid fa-robot"></i><span></span></div><div><b>BTEC JO AI</b><small><i class="fa-solid fa-circle"></i> جاهز للإجابة</small></div><button id="clearChat" title="مسح المحادثة"><i class="fa-solid fa-trash"></i></button></div>
+<div id="chatMessages" class="chat-messages"><div class="message bot"><div class="mini-avatar"><i class="fa-solid fa-robot"></i></div><div><span class="sender">BTEC AI</span><p>أهلًا 👋 أنا مساعد BTEC JO. اختار سؤال من القائمة أو اكتب سؤالك تحت. رح أجاوب فقط ضمن مواضيع نظام BTEC.</p><div class="chips"><button data-q="كيف أبدأ واجب BTEC؟">كيف أبدأ الواجب؟</button><button data-q="شو الفرق بين P و M و D؟">P / M / D</button><button data-q="هل BTEC فيه امتحان؟">الامتحان</button></div></div></div></div>
+<div id="typing" class="typing hidden"><span></span><span></span><span></span><b>المساعد يجهز الجواب...</b></div>
+<form id="chatForm" class="chat-input"><input id="userQuestion" autocomplete="off" placeholder="اكتب سؤالك عن BTEC هنا..."/><button type="submit"><i class="fa-solid fa-paper-plane"></i></button></form>
+<div class="scope-note"><i class="fa-solid fa-shield-halved"></i> هذا المساعد مخصص لمواضيع BTEC. لا يعتمد عليه بدل تعليمات المدرسة أو وزارة التربية أو مواصفة الوحدة الرسمية.</div>
+</div>
+</div></section
+</main>
+
+<div id="quickQuiz" class="quiz-overlay" aria-hidden="true">
+  <div class="quiz-modal" role="dialog" aria-modal="true" aria-label="الاختبار السريع">
+    <div class="quiz-head">
+      <div><span class="quiz-label">BTEC QUICK QUIZ</span><h2>اختبارك السريع</h2></div>
+      <button id="quizClose" class="quiz-close">×</button>
+    </div>
+    <div class="quiz-track"><span id="quizProgress"></span></div>
+    <div id="quizCounter" class="quiz-counter">السؤال 1 من 3</div>
+    <h3 id="quizQuestion"></h3>
+    <div id="quizAnswers" class="quiz-answers"></div>
+    <div id="quizResult" class="quiz-result"></div>
+  </div>
+</div>
+
+<div id="btec-loading-screen" aria-label="جاري تحميل BTEC JO">
+  <div class="btec-loader">
+    <img class="btec-loader-logo" src="../assets/btec-jo-logo.svg" alt="BTEC JO">
+    <div class="btec-spinner"></div>
+    <div class="btec-loader-title">BTEC JO</div>
+    <div class="btec-loader-sub">جاري تحميل المساعد...</div>
+    <div class="btec-loader-bar"><i></i></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script src="ai.js"></script>
+<script src="ai-config.js"></script>
+</body>
+</html>

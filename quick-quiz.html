@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BTEC JO | الاختبار السريع</title><link rel="stylesheet" href="quick-quiz.css">
+<link rel="stylesheet" href="navigation.css">
+<link rel="icon" type="image/svg+xml" href="../assets/btec-jo-logo.svg"><link rel="apple-touch-icon" href="../assets/btec-jo-logo.svg"><meta name="theme-color" content="#0d1730"><style>
+#btec-loading-screen{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;background:rgba(9,18,38,.94);backdrop-filter:blur(8px);opacity:1;visibility:visible;transition:opacity .45s ease,visibility .45s ease}
+#btec-loading-screen.btec-loaded{opacity:0;visibility:hidden;pointer-events:none}
+.btec-loader{width:min(250px,78vw);text-align:center;color:#fff}
+.btec-loader-logo{width:92px;height:92px;margin:0 auto 18px;display:block;filter:drop-shadow(0 8px 24px rgba(0,168,232,.3))}
+.btec-spinner{width:116px;height:116px;border-radius:50%;margin:-108px auto 22px;border:4px solid rgba(255,255,255,.13);border-top-color:#00a8e8;border-right-color:#315eea;animation:btec-spin 1s linear infinite}
+.btec-loader-title{font-size:23px;font-weight:900;letter-spacing:.5px}.btec-loader-sub{margin-top:7px;font-size:12px;opacity:.75}
+.btec-loader-bar{height:4px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin:18px 20px 0}
+.btec-loader-bar i{display:block;width:40%;height:100%;background:linear-gradient(90deg,#00a8e8,#315eea);border-radius:99px;animation:btec-progress 1.15s ease-in-out infinite}
+@keyframes btec-spin{to{transform:rotate(360deg)}}@keyframes btec-progress{0%{transform:translateX(260%)}100%{transform:translateX(-260%)}}
+@media(max-width:480px){.btec-loader-title{font-size:20px}.btec-loader-logo{width:82px;height:82px}}
+</style><link rel="manifest" href="manifest.webmanifest"></head>
+<body>
+<script src="navigation.js"></script>
+<main>
+<section class="hero"><span>🧠 BTEC QUICK QUIZ</span><h1>اختبار سريع من 3 أسئلة</h1><p>اختر تخصصك، وسيختار النظام أسئلة مناسبة. بعد الإجابة على السؤال الثالث تُغلق الجولة نهائيًا.</p></section>
+<section class="quiz">
+<div class="setup" id="setup"><label>اختر تخصصك</label><select id="specialty"></select><button id="start">ابدأ الاختبار</button></div>
+<div id="game" hidden>
+<div class="progress"><span id="counter">السؤال 1 من 3</span><div><i id="progress"></i></div></div>
+<div id="question"></div>
+<div id="answers"></div>
+<button id="next" disabled>التالي ←</button>
+</div>
+<div id="result" hidden></div>
+</section>
+</main>
+<script src="quick-quiz.js"></script>
+<div id="btec-loading-screen" aria-label="جاري تحميل BTEC JO"><div class="btec-loader"><img class="btec-loader-logo" src="../assets/btec-jo-logo.svg" alt="BTEC JO"><div class="btec-spinner"></div><div class="btec-loader-title">BTEC JO</div><div class="btec-loader-sub">جاري تحميل الموقع...</div><div class="btec-loader-bar"><i></i></div></div></div><script src="loader.js"></script></body></html>

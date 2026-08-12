@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTEC JO - الدليل الشامل لنظام بيتك في الأردن</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="navigation.css">
+<link rel="icon" type="image/svg+xml" href="../assets/btec-jo-logo.svg"><link rel="apple-touch-icon" href="../assets/btec-jo-logo.svg"><meta name="theme-color" content="#0d1730"><style>
+#btec-loading-screen{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;background:rgba(9,18,38,.94);backdrop-filter:blur(8px);opacity:1;visibility:visible;transition:opacity .45s ease,visibility .45s ease}
+#btec-loading-screen.btec-loaded{opacity:0;visibility:hidden;pointer-events:none}
+.btec-loader{width:min(250px,78vw);text-align:center;color:#fff}
+.btec-loader-logo{width:92px;height:92px;margin:0 auto 18px;display:block;filter:drop-shadow(0 8px 24px rgba(0,168,232,.3))}
+.btec-spinner{width:116px;height:116px;border-radius:50%;margin:-108px auto 22px;border:4px solid rgba(255,255,255,.13);border-top-color:#00a8e8;border-right-color:#315eea;animation:btec-spin 1s linear infinite}
+.btec-loader-title{font-size:23px;font-weight:900;letter-spacing:.5px}.btec-loader-sub{margin-top:7px;font-size:12px;opacity:.75}
+.btec-loader-bar{height:4px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin:18px 20px 0}
+.btec-loader-bar i{display:block;width:40%;height:100%;background:linear-gradient(90deg,#00a8e8,#315eea);border-radius:99px;animation:btec-progress 1.15s ease-in-out infinite}
+@keyframes btec-spin{to{transform:rotate(360deg)}}@keyframes btec-progress{0%{transform:translateX(260%)}100%{transform:translateX(-260%)}}
+@media(max-width:480px){.btec-loader-title{font-size:20px}.btec-loader-logo{width:82px;height:82px}}
+</style><link rel="manifest" href="manifest.webmanifest"></head>
+<body>
+<script src="navigation.js"></script>
+<div id="scrollProgress"></div>
+
+    <!-- شريط التنقل العلوي -->
+    <!-- القسم الرئيسي (Hero) -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>دليلك الشامل لنظام التعليم المهني والتقني **BTEC** في الأردن</h1>
+            <p>كل ما تحتاج معرفته عن التخصصات، الواجبات، شروط النجاح، والفرص المستقبلية لمسار BTEC.</p>
+            <a href="#about" class="btn-primary">استكشف النظام الآن</a>
+        </div>
+    </section>
+
+    <!-- قسم عن النظام -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">ما هو نظام BTEC الأكاديمي؟</h2>
+            <div class="about-grid">
+                <div class="card">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <h3>النظام الدراسي الأكاديمي</h3>
+                    <p>هو نظام بريطاني دولي معتمد في المدارس المهنية الأردنية (التعليم المهني الشامل الجديد). يعتمد على التعلم التطبيقي والعملي بنسبة أكبر من الحفظ والتلقين، حيث يُقيّم الطالب بناءً على واجعات عمليه وأنشطة مستمرة طوال العام الدراسي.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h3>طريقة التدريس</h3>
+                    <p>تعتمد على المشاريع، العمل الجماعي، حل المشكلات، والتدريب الميداني داخل المشاغل أو المختبرات المجهزة بأحدث التقنيات لربط الطالب بسوق العمل مباشرة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التخصصات -->
+    <section id="specialties" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">التخصصات المتاحة في نظام BTEC</h2>
+            <p class="section-desc">اختر تخصصك لمعرفة التفاصيل والمسارات المتاحة لكل صف دراسي.</p>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن تخصص أو مجال...">
+            </div>
+
+            <div class="specs-grid" id="specsContainer">
+                <div class="spec-card" data-name="تكنولوجيا المعلومات it البرمجة الشبكات">
+                    <i class="fa-solid fa-computer"></i>
+                    <h3>تكنولوجيا المعلومات (IT)</h3>
+                    <p>يغطي البرمجة، تصميم وتطوير المواقع، شبكات الحاسوب، والدعم الفني.</p>
+                </div>
+                <div class="spec-card" data-name="الأعمال الهندسية الصناعية ميكانيك كهرباء">
+                    <i class="fa-solid fa-gears"></i>
+                    <h3>الهندسة والتصنيع</h3>
+                    <p>يشمل الأساسيات الميكانيكية، الكهربائية، وأنظمة التحكم الحديثة.</p>
+                </div>
+                <div class="spec-card" data-name="التصميم الجرافيكي والفنون">
+                    <i class="fa-solid fa-palette"></i>
+                    <h3>التصميم والفنون</h3>
+                    <p>يتناول التصميم الرقمي، الجرافيك، المونتاج، والفنون التطبيقية.</p>
+                </div>
+                <div class="spec-card" data-name="إدارة الأعمال التسويق المحاسبة">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h3>إدارة الأعمال</h3>
+                    <p>يركز على ريادة الأعمال، التسويق الإلكتروني، المحاسبة، والإدارة الحديثة.</p>
+                </div>
+                <div class="spec-card" data-name="الضيافة السياحة الفندقة">
+                    <i class="fa-solid fa-hotel"></i>
+                    <h3>الضيافة والسياحة</h3>
+                    <p>يدرب الطلاب على إدارة الفنادق، خدمات الطهي، والعمل السياحي المتطور.</p>
+                </div>
+                <div class="spec-card" data-name="الزراعة التكنولوجيا الزراعية">
+                    <i class="fa-solid fa-seedling"></i>
+                    <h3>الزراعة والبيئة</h3>
+                    <p>يركز على الزراعة الحديثة، التقنيات البيئية، وإنتاج الغذاء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم نظام الواجبات والمعايير -->
+    <section id="assignments" class="section">
+        <div class="container">
+            <h2 class="section-title">نظام الواجبات وكيفية تحقيق المعايير</h2>
+            <div class="assignments-content">
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-clipboard-list"></i> ما هو نظام الواجبات (Assignments)؟</h3>
+                    <p>في نظام BTEC، لا توجد امتحانات تقليدية مركزية ضخمة لكل مادة، بل يتم تقييم الطالب عبر <strong>وحدات دراسية (Units)</strong>. كل وحدة تحتوي على مجموعة من الواجبات العملية أو التقارير والأبحاث التي يجب على الطالب تسليمها في مواعيد محددة.</p>
+                </div>
+
+                <div class="standards-grid">
+                    <div class="standard-card pass">
+                        <h4>المستوى العادي (Pass - P)</h4>
+                        <p>الحد الأدنى لنجاح الطالب في الواجب. يتطلب إثبات فهم المعارف الأساسية وإنجاز المهام المطلوبة بدقة مقبولة.</p>
+                    </div>
+                    <div class="standard-card merit">
+                        <h4>مستوى الجدارة (Merit - M)</h4>
+                        <p>مستوى متقدم يتطلب تحليلاً أعمق، استنتاجات دقيقة، وجودة أعلى في تنفيذ الواجب أو المشروع العملي.</p>
+                    </div>
+                    <div class="standard-card distinction">
+                        <h4>مستوى التميز (Distinction - D)</h4>
+                        <p>أعلى مستوى تقييم؛ يتطلب إبداعاً، تفكيراً نقدياً عالياً، وتنفيذاً احترافياً يتجاوز المتطلبات الأساسية للواجب.</p>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <h3>نصائح لتحقيق أعلى المعايير في واجباتك:</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> اقرأ معايير التقييم (Criteria) بعناية قبل البدء بتنفيذ الواجب.</li>
+                        <li><i class="fa-solid fa-check"></i> التزم بالمواعيد النهائية لتسليم الواجبات (Deadlines).</li>
+                        <li><i class="fa-solid fa-check"></i> قدم أدلة وبراهين عملية واضحة (صور، فيديوهات، تقارير مكتوبة) تثبت عملك.</li>
+                        <li><i class="fa-solid fa-check"></i> استشر معلمك فوراً إذا واجهتك صعوبة في فهم متطلبات المعيار.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم أسباب الرسوب -->
+    <section id="failure" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">أسباب تؤدي إلى رسوب الطالب في نظام BTEC</h2>
+            <div class="failure-grid">
+                <div class="fail-card">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <h3>عدم تسليم الواجبات في موعدها</h3>
+                    <p>التأخر الدائم عن المواعيد النهائية (Deadlines) دون عذر قاهر يؤدي لعدم اعتماد الواجب وبالتالي رسوب الوحدة.</p>
+                </div>
+                <div class="fail-card">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <h3>الرسوب في استيفاء معايير (Pass)</h3>
+                    <p>إذا لم يستطع الطالب تحقيق الحد الأدنى من متطلبات الـ Pass في الواجبات، يعتبر غير اجتياز للوحدة وتحتاج لإعادة.</p>
+                </div>
+                <div class="fail-card">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <h3>السرقة الأدبية أو الغش (Plagiarism)</h3>
+                    <p>نقل الواجبات حرفياً من الزملاء أو الإنترنت يعرض الطالب لمساءلة صارمة وقد يتم إلغاء الواجب بالكامل.</p>
+                </div>
+                <div class="fail-card">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <h3>الغياب المتكرر</h3>
+                    <p>نظام BTEC يعتمد على التواجد العملي والمشاركة الصفية، والغياب المتكرر يحرم الطالب من تنفيذ التجارب المطلوبة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الشهادات والفرص -->
+    <section id="certificates" class="section">
+        <div class="container">
+            <h2 class="section-title">الشهادات والفرص المستقبلية</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>الشهادة التي يحصل عليها الطالب</h3>
+                    <p>يحصل الخريج على شهادة ثانوية عامة مهنية أردنية معتمدة، بالإضافة إلى <strong>شهادة BTEC الدولية البريطانية (Pearson BTEC Level 3)</strong> الموثوقة عالمياً، والتي تفتح الأبواب للدراسة في كبرى الجامعات المحلية والدولية.</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h3>الفرص المتاحة للطالب بعد التخرج</h3>
+                    <ul class="opportunities-list">
+                        <li><i class="fa-solid fa-arrow-left"></i> الالتحاق بالجامعات الأردنية (تخصصات البكالوريوس أو الدبلوم التقني).</li>
+                        <li><i class="fa-solid fa-arrow-left"></i> دخول سوق العمل المحلي والعالمي مباشرة بفضل المهارات التطبيقية المكتسبة.</li>
+                        <li><i class="fa-solid fa-arrow-left"></i> إمكانية مواصلة الدراسة في الخارج نظراً للاعتراف الدولي بشهادة BTEC.</li>
+                        <li><i class="fa-solid fa-arrow-left"></i> بدء مشاريع ريادية خاصة بناءً على التدريب العملي المكتسب.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- ===== أقسام BTEC JO الإضافية المدمجة ===== -->
+
+<section id="journey" class="section years-guide">
+    <div class="container">
+        <div class="years-head">
+            <div>
+                <span class="years-kicker">BTEC JO • دليل الصفوف</span>
+                <h2 class="section-title">شرح الصفوف والمواد الأكاديمية في BTEC</h2>
+                <p class="section-desc">جدول مبسط يساعد طالب BTEC على معرفة ماذا يدرس في كل سنة، وما الذي يدخل ضمن الامتحان الوزاري وفق المعلومات المعروضة في هذا الدليل.</p>
+            </div>
+            <div class="years-badge">10 → 11 → 12</div>
+        </div>
+
+        <div class="years-note">
+            <strong>📌 ملاحظة مهمة</strong>
+            <p>طالب BTEC في الصف العاشر يدرس مواد الثقافة المشتركة، لكن وفق هذا الدليل لا تدخل مواد العاشر في الامتحان الوزاري النهائي. أما في الحادي عشر والثاني عشر فتتركز مواد الثقافة المشتركة الأساسية على التربية الإسلامية واللغة العربية واللغة الإنجليزية وتاريخ الأردن، ويكون الامتحان الوزاري في نهاية الثاني عشر.</p>
+        </div>
+
+        <div class="years-table-wrap">
+            <table class="years-table">
+                <thead>
+                    <tr>
+                        <th>الصف</th>
+                        <th>المادة الأكاديمية / المشتركة</th>
+                        <th>الدروس أو الأجزاء المطلوبة</th>
+                        <th>هل تدخل بالتوجيهي؟</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="grade-10">
+                        <td rowspan="7"><span class="grade-dot green"></span><strong>الصف العاشر</strong><small>Level 2</small></td>
+                        <td>التربية الإسلامية</td><td>المادة المقررة للصف العاشر حسب خطة BTEC</td><td><span class="status no">❌ لا</span></td>
+                    </tr>
+                    <tr><td>اللغة العربية</td><td>المادة المقررة للصف العاشر ضمن الثقافة المشتركة</td><td><span class="status no">❌ لا</span></td></tr>
+                    <tr><td>اللغة الإنجليزية</td><td>المادة المقررة للصف العاشر</td><td><span class="status no">❌ لا</span></td></tr>
+                    <tr><td>التربية الوطنية</td><td>مادة الثقافة الوطنية</td><td><span class="status no">❌ لا</span></td></tr>
+                    <tr><td>اللغة الإنجليزية الوظيفية</td><td>وحدات اللغة الإنجليزية الوظيفية الخاصة بالمسار المهني</td><td><span class="status no">❌ لا</span></td></tr>
+                    <tr><td>المهارات الرقمية</td><td>المهارات الرقمية المقررة للمسار</td><td><span class="status no">❌ لا</span></td></tr>
+                    <tr><td>التربية الرياضية</td><td>المتطلبات الرياضية</td><td><span class="status no">❌ لا</span></td></tr>
+
+                    <tr class="grade-11">
+                        <td rowspan="7"><span class="grade-dot yellow"></span><strong>الحادي عشر</strong><small>الأول ثانوي • Level 3</small></td>
+                        <td><strong>التربية الإسلامية</strong></td><td>أجزاء محددة من منهج التربية الإسلامية المقرر لـ BTEC</td><td><span class="status yes">✅ نعم</span></td>
+                    </tr>
+                    <tr><td><strong>اللغة العربية</strong></td><td>أجزاء محددة من منهج العربية المقرر لـ BTEC</td><td><span class="status yes">✅ نعم</span></td></tr>
+                    <tr><td><strong>اللغة الإنجليزية</strong></td><td>أجزاء محددة من منهج الإنجليزية المقرر لـ BTEC</td><td><span class="status yes">✅ نعم</span></td></tr>
+                    <tr><td><strong>تاريخ الأردن</strong></td><td>المادة المقررة لطلبة BTEC</td><td><span class="status yes">✅ نعم</span></td></tr>
+                    <tr><td>اللغة الإنجليزية الوظيفية</td><td>حسب التخصص والمسار المهني</td><td><span class="status no">❌ لا</span></td></tr>
+                    <tr><td>المهارات الرقمية</td><td>حسب خطة BTEC</td><td><span class="status no">❌ لا</span></td></tr>
+                    <tr><td>التربية الرياضية</td><td>حسب المتطلبات الرياضية</td><td><span class="status no">❌ لا</span></td></tr>
+
+                    <tr class="grade-12">
+                        <td rowspan="5"><span class="grade-dot red"></span><strong>الثاني عشر</strong><small>التوجيهي • Level 3</small></td>
+                        <td><strong>التربية الإسلامية</strong></td><td>استكمال المادة المقررة للثقافة المشتركة</td><td><span class="status yes">✅ امتحان وزاري</span></td>
+                    </tr>
+                    <tr><td><strong>اللغة العربية</strong></td><td>استكمال المادة المقررة لـ BTEC</td><td><span class="status yes">✅ امتحان وزاري</span></td></tr>
+                    <tr><td><strong>اللغة الإنجليزية</strong></td><td>استكمال المادة المقررة لـ BTEC</td><td><span class="status yes">✅ امتحان وزاري</span></td></tr>
+                    <tr><td><strong>تاريخ الأردن</strong></td><td>المادة المقررة لـ BTEC</td><td><span class="status yes">✅ امتحان وزاري</span></td></tr>
+                    <tr><td><strong>تخصص BTEC</strong></td><td>مشاريع ووحدات التخصص في المستوى الثالث</td><td><span class="status major">✅ جزء من المعدل النهائي</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="years-cards">
+            <article><span class="card-number green-bg">10</span><div><h3>الصف العاشر</h3><b>المستوى الثاني • حوالي 480 ساعة</b><p>عربي + إنجليزي + إسلامية + وطنية + إنجليزي وظيفي + مهارات رقمية + رياضة، إلى جانب تخصص BTEC حسب الخطة.</p></div></article>
+            <article><span class="card-number yellow-bg">11</span><div><h3>الحادي عشر</h3><b>المستوى الثالث • جزء من خطة 720 ساعة</b><p>عربي + إنجليزي + إسلامية + تاريخ الأردن + إنجليزي وظيفي + مهارات رقمية + رياضة، مع التوسع في وحدات التخصص.</p></div></article>
+            <article><span class="card-number red-bg">12</span><div><h3>الثاني عشر</h3><b>استكمال المستوى الثالث</b><p>استكمال الوحدات والمواد المشتركة، وإنهاء متطلبات التخصص والاستعداد للامتحان الوزاري والتخرج.</p></div></article>
+        </div>
+
+        <div class="tawjihi-box">
+            <div class="tawjihi-title"><span>🎯</span><div><h3>كيف ينحسب التوجيهي في BTEC؟</h3><p>بشكل مبسط وفق المعلومات التي يعتمدها هذا الدليل:</p></div></div>
+            <div class="ratio-grid">
+                <div class="ratio-card"><strong>70%</strong><span>إنجازات ومشاريع BTEC</span><small>في الصفين 11 و12</small></div>
+                <div class="ratio-plus">+</div>
+                <div class="ratio-card ministry"><strong>30%</strong><span>الامتحانات الوزارية</span><small>في مواد الثقافة المشتركة</small></div>
+            </div>
+            <p class="tawjihi-summary">يعني طالب BTEC لا يسير على نفس خطة المواد الأكاديمية التقليدية كاملة؛ التركيز يكون على <strong>تخصص BTEC + مواد الثقافة المشتركة المحددة</strong> وفق الخطة المعتمدة.</p>
+        </div>
+
+        <div class="years-disclaimer">
+            <span>ℹ️</span>
+            <p>هذه الصفحة صيغت من المعلومات التي زودتني بها. الخطط الرسمية، المواد، الساعات، وآلية احتساب المعدل قد تتغير حسب السنة الدراسية والتعليمات الرسمية؛ لذلك يجب مطابقة التفاصيل النهائية مع تعميم وزارة التربية والتعليم وخطة المدرسة والتخصص.</p>
+        </div>
+    </div>
+</section>
+
+<section id="academic" class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">كيف بكون نظام الدراسة الأكاديمي؟</h2>
+        <div class="academic-grid">
+            <div class="academic-card"><i class="fa-solid fa-school"></i><h3>مواد مشتركة</h3><p>يوجد جانب أكاديمي مشترك إلى جانب التخصص المهني، وتختلف المواد والمتطلبات حسب الصف والخطة الرسمية.</p></div>
+            <div class="academic-card"><i class="fa-solid fa-screwdriver-wrench"></i><h3>تطبيق عملي</h3><p>المشاريع والتطبيقات العملية جزء أساسي من طبيعة BTEC، لذلك لا تعتمد الدراسة على الحفظ وحده.</p></div>
+            <div class="academic-card"><i class="fa-solid fa-file-signature"></i><h3>تقييم مستمر</h3><p>الوحدات تحتوي على مهام ومعايير، وقد توجد مكونات تقييم خارجي في بعض المؤهلات حسب المواصفة.</p></div>
+            <div class="academic-card"><i class="fa-solid fa-pen-to-square"></i><h3>الامتحان العام</h3><p>للمسار التقني BTEC في الأردن متطلبات امتحان عام ومواد مقررة تنشرها وزارة التربية والتعليم للسنة المعنية.</p><a target="_blank" href="https://certs.moe.gov.jo/Seats/links.asp">صفحة الامتحان الرسمي ↗</a></div>
+        </div>
+    </div>
+</section>
+
+<section id="criteria-guide" class="section criteria-guide">
+    <div class="container">
+        <h2 class="section-title">دليل عملي لتحقيق كل معيار</h2>
+        <p class="section-desc">لا يوجد عدد صفحات ثابت يصلح لكل معيار. اقرأ فعل المعيار ثم اصنع دليلًا يثبت المطلوب.</p>
+        <div class="criteria-guide-grid">
+            <article><strong>P</strong><h3>Pass</h3><p>حقق الحد الأدنى المكتوب في المعيار، وغطِّ كل عناصر المطلوب بأدلة واضحة ومناسبة.</p><ul><li>لا تترك جزءًا من المعيار.</li><li>استخدم أمثلة مرتبطة بالسيناريو.</li><li>أرفق الأدلة المطلوبة.</li></ul></article>
+            <article><strong>M</strong><h3>Merit</h3><p>عادة يحتاج إلى عمق أكبر من الحد الأدنى وفق صياغة المعيار: تفسير، ربط، تحليل أو تبرير بحسب الوحدة.</p><ul><li>اشرح لماذا وكيف.</li><li>اربط النتائج بالأدلة.</li><li>وضح الأثر والسبب.</li></ul></article>
+            <article><strong>D</strong><h3>Distinction</h3><p>أعلى مستوى، ويتطلب ما تنص عليه المواصفة من تحليل أو تقييم أو حكم مبرر وجودة تطبيق.</p><ul><li>وازن الأدلة والبدائل.</li><li>قدم حكمًا مبررًا.</li><li>ناقش القيود والتحسينات عند طلبها.</li></ul></article>
+        </div>
+        <div class="verb-guide">
+            <h3>أفعال المعايير — اضغط على الفعل</h3>
+            <div id="verbButtons"></div>
+            <div id="verbResult">اختار فعلًا حتى تشوف كيف تتعامل معه.</div>
+        </div>
+    </div>
+</section>
+
+<section id="assignment-process" class="section">
+    <div class="container">
+        <h2 class="section-title">طريقة حل الواجب خطوة بخطوة</h2>
+        <div class="process-grid">
+            <div><span>1</span><h3>اقرأ السيناريو</h3><p>حدد العميل أو الجهة والمشكلة والمطلوب منك.</p></div>
+            <div><span>2</span><h3>حدد Learning Aim</h3><p>اعرف ما الذي يفترض أن تتعلمه أو تطبقه.</p></div>
+            <div><span>3</span><h3>حدد المعايير</h3><p>حوّل P/M/D إلى قائمة مهام واضحة.</p></div>
+            <div><span>4</span><h3>نفّذ العمل</h3><p>أنشئ التقرير أو المنتج أو المشروع حسب الوحدة.</p></div>
+            <div><span>5</span><h3>اجمع الأدلة</h3><p>صور، لقطات شاشة، ملفات، جداول، فيديو أو تقرير حسب المطلوب.</p></div>
+            <div><span>6</span><h3>اربط الدليل</h3><p>وضح أين يثبت كل دليل تحقيق المعيار بدل ترك المصحح يبحث عنه.</p></div>
+            <div><span>7</span><h3>راجع</h3><p>قارن عملك بنص المعيار حرفيًا.</p></div>
+            <div><span>8</span><h3>سلّم</h3><p>تأكد من الملفات والأسماء والمواعيد وتعليمات المدرسة.</p></div>
+        </div>
+        <div class="formula-box"><b>المعيار</b><span>→</span><b>المطلوب</b><span>→</span><b>العمل</b><span>→</span><b>الدليل</b><span>→</span><b>التقييم</b></div>
+    </div>
+</section>
+
+<section id="failure-more" class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">أشياء ممكن تمنع الطالب من النجاح</h2>
+        <div class="failure-grid expanded">
+            <div class="fail-card"><i class="fa-solid fa-list-check"></i><h3>معايير غير محققة</h3><p>إذا لم يثبت الطالب تحقيق معيار مطلوب في الوحدة، قد لا يجتاز متطلبات تلك الوحدة.</p></div>
+            <div class="fail-card"><i class="fa-solid fa-layer-group"></i><h3>عدم إكمال الوحدات</h3><p>المؤهل له تركيبة محددة من الوحدات والمكونات، وعدم إكمال المطلوب يؤثر على المؤهل النهائي.</p></div>
+            <div class="fail-card"><i class="fa-solid fa-file-circle-xmark"></i><h3>دليل غير كافٍ</h3><p>عدد صفحات كبير لا يعوض غياب الدليل الذي يثبت المعيار.</p></div>
+            <div class="fail-card"><i class="fa-solid fa-copy"></i><h3>الغش والانتحال</h3><p>نسخ عمل الآخرين أو تقديم عمل ليس من إنتاجك قد يؤدي إلى إجراءات نزاهة أكاديمية وفق المركز والجهة المانحة.</p></div>
+            <div class="fail-card"><i class="fa-solid fa-calendar-xmark"></i><h3>تجاهل المواعيد</h3><p>التسليم المتأخر قد يسبب مشكلة حسب سياسة المدرسة والمركز، لذلك لا تعتمد على قاعدة واحدة لجميع المدارس.</p></div>
+            <div class="fail-card"><i class="fa-solid fa-person-circle-xmark"></i><h3>الغياب المتكرر</h3><p>الغياب قد يحرم الطالب من التطبيق والأدلة المطلوبة، كما يخضع للحضور المدرسي والتعليمات المحلية.</p></div>
+            <div class="fail-card"><i class="fa-solid fa-file-pen"></i><h3>إهمال التقييم الخارجي</h3><p>إذا كانت الوحدة أو المؤهل يتضمن تقييمًا خارجيًا، يجب الالتزام بمتطلباته كما تحددها المواصفة.</p></div>
+            <div class="fail-card"><i class="fa-solid fa-graduation-cap"></i><h3>عدم تحقيق متطلبات الثانوية</h3><p>هناك متطلبات للامتحان العام في المسار التقني الأردني؛ عدم تحقيقها قد يؤثر على شهادة الثانوية العامة حسب تعليمات السنة.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="opportunities-more" class="section dark-section">
+    <div class="container">
+        <h2 class="section-title">الفرص بعد التخرج</h2>
+        <div class="opportunities-grid">
+            <div><b>🎓</b><h3>التعليم العالي</h3><p>يمكن أن يدعم المؤهل التقدم للتعليم العالي، لكن القبول والتخصصات تعتمد على شروط الجهة الرسمية والجامعة والسنة.</p></div>
+            <div><b>💼</b><h3>سوق العمل</h3><p>المهارات التطبيقية والمشاريع تساعد الطالب على بناء مهارات مهنية مرتبطة بتخصصه.</p></div>
+            <div><b>🌍</b><h3>فرص دولية</h3><p>BTEC مؤهل دولي، لكن الاعتراف والقبول يختلفان حسب الدولة والجامعة والتخصص.</p></div>
+            <div><b>🚀</b><h3>ريادة الأعمال</h3><p>المشاريع العملية قد تتحول إلى ملف أعمال أو خدمة أو مشروع شخصي.</p></div>
+            <div><b>🧠</b><h3>مهارات مستقبلية</h3><p>حل المشكلات، البحث، التواصل، العرض، إدارة المشروع والعمل الجماعي.</p></div>
+            <div><b>🔧</b><h3>تدريب وخبرة</h3><p>حسب المدرسة والتخصص، يمكن الاستفادة من المشاريع والزيارات والتدريب العملي المتاح.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="student-checklist" class="section">
+    <div class="container">
+        <h2 class="section-title">Checklist قبل تسليم أي واجب</h2>
+        <div class="checklist">
+            <label><input type="checkbox"> قرأت السيناريو كاملًا</label>
+            <label><input type="checkbox"> حددت Learning Aim</label>
+            <label><input type="checkbox"> كتبت كل المعايير المطلوبة</label>
+            <label><input type="checkbox"> عندي دليل لكل معيار</label>
+            <label><input type="checkbox"> استخدمت مصادر وذكرتها</label>
+            <label><input type="checkbox"> راجعت فعل المعيار</label>
+            <label><input type="checkbox"> الملفات مرتبة ومسمّاة</label>
+            <label><input type="checkbox"> راجعت تعليمات المعلم قبل التسليم</label>
+        </div>
+        <button id="resetChecklist" class="btn-primary">تصفير القائمة</button>
+    </div>
+</section>
+
+<section id="faq" class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">أسئلة شائعة</h2>
+        <div class="faq-list">
+            <details><summary>هل كل تخصصات BTEC لها نفس المعايير؟</summary><p>لا. المعايير تختلف حسب المؤهل والوحدة والمواصفة. لذلك المرجع النهائي هو مواصفة الوحدة ومهمة التقييم المعتمدة.</p></details>
+            <details><summary>هل كل واجبات BTEC عبارة عن تقارير؟</summary><p>لا. نوع المهمة يعتمد على الوحدة والتخصص وقد يكون تقريرًا أو مشروعًا أو منتجًا أو عرضًا أو تطبيقًا عمليًا أو غير ذلك.</p></details>
+            <details><summary>هل كثرة الصفحات تعني علامة أعلى؟</summary><p>لا. المطلوب هو جودة الدليل وتحقيق المعيار، وليس عدد الصفحات بحد ذاته.</p></details>
+            <details><summary>هل BTEC يعني عدم وجود امتحان؟</summary><p>ليس بهذه البساطة. بعض المكونات قد تكون تقييمًا داخليًا وبعض المؤهلات تتضمن تقييمًا خارجيًا، كما توجد متطلبات امتحان عام للمسار التقني في الأردن حسب تعليمات الوزارة.</p></details>
+            <details><summary>هل الشهادة تضمن قبول الجامعة؟</summary><p>لا توجد ضمانة عامة. القبول يعتمد على شروط الجهة الرسمية والجامعة والتخصص والمؤهل والسنة.</p></details>
+        </div>
+    </div>
+</section>
+
+<section id="official-sources" class="section">
+    <div class="container">
+        <h2 class="section-title">المصادر الرسمية</h2>
+        <div class="source-cards">
+            <a target="_blank" href="https://btec.moe.gov.jo/"><b>وزارة التربية والتعليم — بوابة BTEC</b><small>btec.moe.gov.jo ↗</small></a>
+            <a target="_blank" href="https://www.moe.gov.jo/"><b>وزارة التربية والتعليم الأردنية</b><small>moe.gov.jo ↗</small></a>
+            <a target="_blank" href="https://certs.moe.gov.jo/Seats/links.asp"><b>الامتحان العام — المسار التقني BTEC</b><small>certs.moe.gov.jo ↗</small></a>
+            <a target="_blank" href="https://qualifications.pearson.com/en/campaigns/btec-in-jordan.html"><b>Pearson — BTEC in Jordan</b><small>Pearson ↗</small></a>
+            <a target="_blank" href="https://qualifications.pearson.com/en/qualifications/btec-firsts/assessment-and-grading.html"><b>Pearson — Assessment & Grading</b><small>التقييم والدرجات ↗</small></a>
+        </div>
+        <p class="site-note">ملاحظة: BTEC JO موقع تعليمي مستقل وليس موقعًا رسميًا لوزارة التربية والتعليم أو Pearson. تفاصيل كل وحدة ونتيجة كل طالب يجب تأكيدها من المدرسة والمواصفة والتعليمات الرسمية.</p>
+    </div>
+</section>
+
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <div class="container footer-content">
+            <p>جميع الحقوق محفوظة &copy; 2026 - موقع <strong>BTEC JO</strong> التعليمي في الأردن</p>
+            <p>مصمم خصيصاً لمساعدة طلاب نظام بيتك المهني والتقني</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+<a class="ai-float" href="ai.html" title="مساعد BTEC AI"><i class="fa-solid fa-robot"></i><span>اسأل BTEC AI</span></a>
+<button id="topButton" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+<div id="toast"></div>
+<a href="specialties-encyclopedia.html" class="encyclopedia-link" title="شرح جميع تخصصات BTEC">📚 موسوعة التخصصات</a>
+<div id="btec-loading-screen" aria-label="جاري تحميل BTEC JO"><div class="btec-loader"><img class="btec-loader-logo" src="../assets/btec-jo-logo.svg" alt="BTEC JO"><div class="btec-spinner"></div><div class="btec-loader-title">BTEC JO</div><div class="btec-loader-sub">جاري تحميل الموقع...</div><div class="btec-loader-bar"><i></i></div></div></div><script src="loader.js"></script></body>
+</html>

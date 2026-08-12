@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTEC JO | موسوعة التخصصات</title>
+<meta name="description" content="موسوعة BTEC JO: شرح التخصصات والوحدات والمهارات ونظام الدراسة وخطة التفوق.">
+<link rel="stylesheet" href="specialties-encyclopedia.css">
+<style>.daily-link,.quiz-link{position:fixed;z-index:999;bottom:20px;text-decoration:none;color:#fff;background:#315eea;padding:11px 14px;border-radius:13px;font:bold 12px Tahoma;box-shadow:0 10px 30px rgba(49,94,234,.25)}.daily-link{left:20px}.quiz-link{left:175px;background:#15233f}@media(max-width:600px){.quiz-link{left:20px;bottom:72px}}</style><link rel="stylesheet" href="navigation.css">
+<link rel="icon" type="image/svg+xml" href="../assets/btec-jo-logo.svg"><link rel="apple-touch-icon" href="../assets/btec-jo-logo.svg"><meta name="theme-color" content="#0d1730"><style>
+#btec-loading-screen{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;background:rgba(9,18,38,.94);backdrop-filter:blur(8px);opacity:1;visibility:visible;transition:opacity .45s ease,visibility .45s ease}
+#btec-loading-screen.btec-loaded{opacity:0;visibility:hidden;pointer-events:none}
+.btec-loader{width:min(250px,78vw);text-align:center;color:#fff}
+.btec-loader-logo{width:92px;height:92px;margin:0 auto 18px;display:block;filter:drop-shadow(0 8px 24px rgba(0,168,232,.3))}
+.btec-spinner{width:116px;height:116px;border-radius:50%;margin:-108px auto 22px;border:4px solid rgba(255,255,255,.13);border-top-color:#00a8e8;border-right-color:#315eea;animation:btec-spin 1s linear infinite}
+.btec-loader-title{font-size:23px;font-weight:900;letter-spacing:.5px}.btec-loader-sub{margin-top:7px;font-size:12px;opacity:.75}
+.btec-loader-bar{height:4px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin:18px 20px 0}
+.btec-loader-bar i{display:block;width:40%;height:100%;background:linear-gradient(90deg,#00a8e8,#315eea);border-radius:99px;animation:btec-progress 1.15s ease-in-out infinite}
+@keyframes btec-spin{to{transform:rotate(360deg)}}@keyframes btec-progress{0%{transform:translateX(260%)}100%{transform:translateX(-260%)}}
+@media(max-width:480px){.btec-loader-title{font-size:20px}.btec-loader-logo{width:82px;height:82px}}
+</style><link rel="manifest" href="manifest.webmanifest"></head>
+<body>
+<script src="navigation.js"></script>
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">BTEC JO • STUDENT ENCYCLOPEDIA</span>
+    <h1>شرح جميع تخصصات BTEC</h1>
+    <p>موسوعة تفاعلية تساعدك تعرف تخصصك من البداية: شو راح تدرس، شو الوحدات، شو المهارات، كيف تتفوق، وما المسارات الممكنة بعد التخرج.</p>
+    <div class="hero-actions">
+      <button class="primary" id="startExplore">استكشف التخصصات ↓</button>
+      <a class="secondary" href="ai.html">🤖 اسأل BTEC AI</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="orb">🎓</div>
+    <h3>اختار تخصصك</h3>
+    <p>ثم افتح كل وحدة واقرأ تفاصيلها وماذا يتعلم الطالب فيها.</p>
+    <div class="mini-stats"><b id="specialtyCount">0</b><span>تخصص</span><b id="unitCount">0</b><span>وحدة معروضة</span></div>
+  </div>
+</section>
+
+<section class="toolbar" id="explore">
+  <div>
+    <label>🔎 ابحث عن تخصص</label>
+    <input id="search" placeholder="مثال: إدارة الأعمال، IT، هندسة..." autocomplete="off">
+  </div>
+  <div>
+    <label>📚 تصنيف</label>
+    <select id="category">
+      <option value="all">كل التخصصات</option>
+      <option value="business">إدارة وأعمال</option>
+      <option value="technology">تقنية</option>
+      <option value="engineering">هندسة وإنشاءات</option>
+      <option value="creative">إبداع وإعلام</option>
+      <option value="service">خدمات وسياحة</option>
+      <option value="land">زراعة ورياضة وصحة</option>
+    </select>
+  </div>
+</section>
+
+<section class="cards" id="cards"></section>
+
+<section class="note">
+  <strong>📌 ملاحظة مهمة:</strong>
+  أسماء الوحدات المعروضة هنا مبنية على مواصفات Pearson BTEC International Level 3 أو على وصف المجال الرسمي، وليست وعدًا بأن كل طالب في الأردن يدرس جميع هذه الوحدات. اختيار الوحدات وحجم المؤهل والبرنامج الفعلي يجب التحقق منه مع المدرسة/المركز والمواصفة المعتمدة.
+</section>
+</main>
+
+<div id="drawer" class="drawer" aria-hidden="true">
+  <div class="drawer-panel">
+    <button id="closeDrawer" class="close">×</button>
+    <div id="detail"></div>
+  </div>
+</div>
+
+<script src="specialties-encyclopedia.js"></script><div id="btec-loading-screen" aria-label="جاري تحميل BTEC JO"><div class="btec-loader"><img class="btec-loader-logo" src="../assets/btec-jo-logo.svg" alt="BTEC JO"><div class="btec-spinner"></div><div class="btec-loader-title">BTEC JO</div><div class="btec-loader-sub">جاري تحميل الموقع...</div><div class="btec-loader-bar"><i></i></div></div></div><script src="loader.js"></script></body>
+</html>

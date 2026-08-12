@@ -1,0 +1,1 @@
+BTEC JO Web Search + AI\n\nضع مفتاح OpenAI الحقيقي في .env.\nالنسخة تستخدم Responses API مع أداة web_search_preview.\nلا تضع المفتاح داخل ملفات الواجهة.\nاختبر /api/health ثم جرّب سؤالًا غير موجود في knowledge.json.\n

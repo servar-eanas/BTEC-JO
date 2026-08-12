@@ -4,7 +4,9 @@
     ['specialties-encyclopedia.html','📚','شرح جميع التخصصات'],
     ['daily-motivation.html','🚀','تحفيز الطالب اليومي'],
     ['quick-quiz.html','🧠','الاختبار السريع'],
-    ['ai.html','🤖','BTEC AI']
+    ['ai.html','🤖','BTEC AI'],
+    ['student-dashboard.html','📊','لوحة الطالب'],
+    ['sources.html','🔗','المصادر الرسمية']
   ];
   const homeSections=[
     ['about','📘','عن نظام BTEC'],
@@ -78,4 +80,6 @@
     menu.setAttribute('aria-hidden','false');
     chevron.textContent='⌃';
   }
+
+  if("serviceWorker" in navigator){ window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{})); }
 })();

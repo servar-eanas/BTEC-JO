@@ -37,7 +37,7 @@ function render(){
 window.openSpecialty=function(id){
   const s=DATA.find(x=>x.id===id); if(!s) return;
   detail.innerHTML=`
-    <div class="detail-head"><div class="detail-icon">${s.icon}</div><div><h1>${s.name}</h1><p>${s.summary}</p><span class="pill">📚 شرح الوحدات</span><span class="pill">🏆 التفوق</span><span class="pill">💼 المهارات والفرص</span></div></div>
+    <div class="detail-head"><div class="detail-icon">${s.icon}</div><div><h1>${s.name}</h1><p>${s.summary}</p><button type="button" class="favorite-specialty" onclick="toggleFavoriteSpecialty('${s.id}','${s.name.replace(/'/g,"\'")}')">⭐ حفظ في المفضلة</button><span class="pill">📚 شرح الوحدات</span><span class="pill">🏆 التفوق</span><span class="pill">💼 المهارات والفرص</span></div></div>
     <div class="detail-grid">
       <section class="panel"><h3>📘 ماذا سيتعلم الطالب؟</h3><ul>${s.learn.map(x=>`<li>${x}</li>`).join("")}</ul></section>
       <section class="panel"><h3>🧠 المهارات التي يطورها</h3><ul>${s.skills.map(x=>`<li>${x}</li>`).join("")}</ul></section>

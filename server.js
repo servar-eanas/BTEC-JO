@@ -51,135 +51,51 @@ function candidateLevel(text){
  return null;
 }
 
-const INTENT_PATTERNS = [
-  ["criteria", [/\b(p|m|d)\s*\d*\b/i, /معيار|معايير|تحقيق|pass|merit|distinction|باس|ميرت|تميز/]],
-  ["units", [/وحده|وحدات|unit|units|learning aim/]],
-  ["assignments", [/واجب|واجبات|assignment|تسليم|تقييم/]],
-  ["specializations", [/تخصص|تخصصات|مسار|اداره الاعمال|إدارة الأعمال|business/]],
-  ["tawjihi", [/توجيهي|امتحان وزاري|الثقافه المشتركه|الثقافة المشتركة|وزاري/]],
-  ["academic", [/اكاديمي|أكاديمي|مواد مشتركه|مواد مشتركة|عربي|انجليزي|إسلاميه|اسلاميه|تاريخ الاردن|تاريخ الأردن/]],
-  ["certificates", [/شهاده|شهادات|مؤهل|جهة مانحه|الجهة المانحة/]],
-  ["failure", [/رسوب|رسب|فشل|غش|انتحال|تأخر بالتسليم|عدم تسليم/]],
-  ["opportunities", [/فرص|جامعه|جامعة|سوق العمل|توظيف|تدريب|بعد التخرج|portfolio|ملف الاعمال|ملف الأعمال/]],
-  ["assessment", [/امتحان|امتحانات|تقييم داخلي|تقييم خارجي|تقييم/]],
-];
-
-function detectIntents(text){
- const n=normalize(text);
- return INTENT_PATTERNS.filter(([,patterns])=>patterns.some(re=>re.test(n))).map(([name])=>name);
-}
-function primaryIntent(text){
- const intents=detectIntents(text);
- // Explicitly prefer the student's requested object. "الوحدات" must beat
- // generic BTEC terms such as طالب/تخصص.
- const priority=["criteria","units","assignments","specializations","tawjihi","certificates","failure","opportunities","academic","assessment"];
- return priority.find(x=>intents.includes(x))||null;
-}
-function candidateHasIntent(text,intent){
- return intent ? detectIntents(text).includes(intent) : true;
-}
-
 function localMatch(q){
  const requestedLevel=detectCriterionLevel(q);
- const nq=normalize(q);
- const a=tokens(q);
- const intent=primaryIntent(q);
- if(!a.length && !requestedLevel && !intent)return null;
-
- // 1) Exact match always wins, but only inside the same detected intent.
- for(const item of knowledge){
-  for(const candidate of (item.keys||[])){
-   if(normalize(candidate)===nq){
-    const level=candidateLevel(candidate);
-    if((!requestedLevel || !level || level===requestedLevel) &&
-       (!intent || candidateHasIntent(candidate,intent))){
-     return {answer:item.answer,matchedQuestion:candidate,score:100,intent};
-    }
-   }
-  }
- }
-
- // 2) Explicit P/M/D: only use candidates from the same level and criteria intent.
- if(requestedLevel && /تحقق|حقق|تحقيق|معيار|مطلوب|اكتب|اعمل|اسوي/.test(nq)){
-  for(const item of knowledge){
-   for(const candidate of (item.keys||[])){
-    if(candidateLevel(candidate)!==requestedLevel) continue;
-    if(intent && !candidateHasIntent(candidate,intent)) continue;
-    const cn=normalize(candidate);
-    const qTokens=new Set(a);
-    const cTokens=new Set(tokens(candidate));
-    const overlap=[...qTokens].filter(t=>cTokens.has(t)).length;
-    if(overlap>=2){
-     return {answer:item.answer,matchedQuestion:candidate,score:90,intent};
-    }
-   }
-  }
-  return null;
- }
-
- // 3) Intent-gated fuzzy matching. A candidate from another topic is never
- // allowed to answer this question. This fixes e.g. "ما هي الوحدات؟" picking
- // an unrelated "الرسوب" answer because both contain BTEC/student words.
+ const a=tokens(q); if(!a.length && !requestedLevel)return null;
  let best=null,bestScore=0;
  for(const item of knowledge){
   for(const candidate of (item.keys||[])){
    const level=candidateLevel(candidate);
+   // If the student explicitly asks for P/M/D, only match candidates for that level
+   // (or an intentionally general comparison question with no single level).
    if(requestedLevel && level && level!==requestedLevel) continue;
-   if(intent && !candidateHasIntent(candidate,intent)) continue;
-
-   const b=new Set(tokens(candidate));
-   let exactHits=0,partialHits=0;
+   if(requestedLevel && !level && requestedLevel!=='P' && /تحقيق|معنى|اعمل|اسوي/.test(normalize(q))) continue;
+   const b=new Set(tokens(candidate)); let hit=0;
    for(const t of a){
-    if(b.has(t)) exactHits++;
-    else for(const x of b){
-     if(x.includes(t)||t.includes(x)){partialHits++;break;}
-    }
+    if(b.has(t)) hit+=2;
+    else for(const x of b){if(x.includes(t)||t.includes(x)){hit+=.7;break}}
    }
-
-   const evidence=exactHits + partialHits*0.25;
-   if(exactHits<2 && a.length>1) continue;
-   if(exactHits<2 && a.length===1) continue;
-   const coverage=evidence/Math.max(a.length,1);
-   const specificity=exactHits*1.0;
-   const levelBoost=requestedLevel && level===requestedLevel?2:0;
-   const intentBoost=intent?1.5:0;
-   const score=coverage+specificity+levelBoost+intentBoost;
+   const nq=normalize(q), nc=normalize(candidate);
+   const exact=nq===nc?8:0;
+   // Strongly reward the exact requested level appearing in the candidate.
+   const levelBoost=requestedLevel && level===requestedLevel?4:0;
+   const score=(a.length?hit/a.length:0)+exact+levelBoost;
    if(score>bestScore){bestScore=score;best={answer:item.answer,matchedQuestion:candidate};}
   }
  }
- return best && bestScore>=3.0 ? {...best,score:bestScore,intent}:null;
+ return bestScore>=0.48?{...best,score:bestScore}:null;
 }
 
-const btecTerms=["btec","بيتك","واجب","معيار","assignment","learning aim","pass","merit","distinction","توجيهي","التخصص","الشهادات","الامتحان","الامتحانات","الثقافة المشتركة","المهني","الوحدة","الوحدات","وحدات","unit","units","بيرسون","pearson"];
+const btecTerms=["btec","بيتك","واجب","معيار","assignment","learning aim","pass","merit","distinction","توجيهي","التخصص","الشهادات","الامتحان","الثقافة المشتركة","المهني","الوحدة","unit","بيرسون","pearson"];
 const btecOnly=q=>{
  const n=normalize(q);
- const topicTerms=[
-  "وحده","وحدات","معيار","معايير","واجب","واجبات","assignment","learning aim",
-  "تخصص","تخصصات","دراسه","دراسة","توجيهي","بيتك","btec","شهاده","شهادات",
-  "امتحان","امتحانات","رسوب","رسوب","نجاح","pass","merit","distinction",
-  "p","m","d","فرص","جامعه","جامعة","تقييم","portfolio","مشروع","مشاريع"
- ];
  return btecTerms.some(t=>n.includes(normalize(t))) ||
-   topicTerms.some(t=>n.includes(normalize(t))) ||
-   /\b(p|m|d)\s*\d*\b/i.test(n);
+   /\b(p|m|d)\s*\d*\b/i.test(n) ||
+   /كيف|شو|ما|هل/.test(n) && /وحده|معيار|واجب|تخصص|دراسه|توجيهي|بيتک|بيتك/.test(n);
 };
 
 const apiKey=(process.env.OPENAI_API_KEY||"").trim();
-const client=apiKey && !/ضع[_ ]?مفتاحك|your[_ ]?api[_ ]?key|xxxxxxxx|sk-?x+/i.test(apiKey)
-  ? new OpenAI({apiKey})
-  : null;
-
-app.get("/robots.txt",(req,res)=>{
-  const base=(process.env.PUBLIC_URL||`${req.protocol}://${req.get("host")}`).replace(/\/$/,"");
-  res.type("text/plain").send(`User-agent: *\nAllow: /\nSitemap: ${base}/sitemap.xml\n`);
-});
-
-app.get("/sitemap.xml",(req,res)=>{
-  const base=(process.env.PUBLIC_URL||`${req.protocol}://${req.get("host")}`).replace(/\/$/,"");
-  const pages=["/","/ai.html","/specialties-encyclopedia.html","/quick-quiz.html","/daily-motivation.html"];
-  const xml='<?xml version="1.0" encoding="UTF-8"?>'+pages.map(p=>`<url><loc>${base}${p}</loc></url>`).join("");
-  res.type("application/xml").send(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${xml}</urlset>`);
-});
+// OpenAI auth headers are ASCII/ByteString values. Reject placeholders or malformed
+// Unicode values before constructing the client so a bad Render secret cannot crash
+// every /api/ask request with an undici ByteString error.
+const looksLikeOpenAIKey = key => {
+  if(!key || /ضع[_ ]?مفتاحك|your[_ ]?api[_ ]?key|xxxxxxxx|sk-?x+/i.test(key)) return false;
+  if(!/^[\x00-\x7F]+$/.test(key)) return false;
+  return /^(sk|sk-proj)-[A-Za-z0-9_-]{20,}$/.test(key);
+};
+const client=looksLikeOpenAIKey(apiKey) ? new OpenAI({apiKey}) : null;
 
 app.get("/api/health",(req,res)=>res.json({
  ok:true,
@@ -191,20 +107,12 @@ app.get("/api/health",(req,res)=>res.json({
 
 function extractWebSources(response){
  const out=[];
- const add=(src)=>{
-  if(!src)return;
-  const url=src.url || src.uri;
-  if(url && !out.some(x=>x.url===url)) out.push({title:src.title||url,url});
- };
  for(const item of (response?.output||[])){
-  if(item?.type==="web_search_call"){
-   for(const src of (item?.action?.sources||[])) add(src);
-  }
-  if(item?.type==="message"){
-   for(const part of (item?.content||[])){
-    for(const ann of (part?.annotations||[])){
-     if(ann?.type==="url_citation") add({title:ann.title,url:ann.url});
-    }
+  if(item?.type!=="web_search_call") continue;
+  const sources=item?.action?.sources||item?.sources||[];
+  for(const src of sources){
+   if(src?.url && !out.some(x=>x.url===src.url)){
+    out.push({title:src.title||src.url,url:src.url});
    }
   }
  }
@@ -237,7 +145,6 @@ app.post("/api/ask",async(req,res)=>{
   // 2) Criterion fallback only when the requested level is explicit and
   // the internal knowledge base has no more specific criterion.
   const requestedLevel=detectCriterionLevel(question);
-  const intent=primaryIntent(question);
   if(requestedLevel){
    const levelAnswers={
     P:"لتحقيق P (Pass)، اقرأ نص معيار P نفسه ومواصفة الوحدة، وحدد كل جزء مطلوب، ونفّذه مع دليل واضح يثبت تحقيقه. عدد الصفحات وحده لا يضمن تحقيق P.",
@@ -273,14 +180,14 @@ app.post("/api/ask",async(req,res)=>{
    }],
    tool_choice:"required",
    instructions:`أنت BTEC JO AI، مساعد متخصص بنظام BTEC في الأردن فقط.
-السؤال لم يوجد في قاعدة المعرفة الداخلية، لذلك يجب استخدام Web Search قبل الإجابة. اعتبر أي سؤال يصل إلى هذه الخدمة ضمن سياق BTEC JO، حتى لو كان مختصرًا مثل "ما هي الوحدات؟"، وفسره على أنه عن BTEC في الأردن.
+السؤال لم يوجد في قاعدة المعرفة الداخلية، لذلك يجب استخدام Web Search قبل الإجابة.
 ابحث فعليًا في الإنترنت ولا تقل "غير موجود" لمجرد أنه غير موجود في قاعدة المعرفة.
 أعط الأولوية للمصادر الرسمية الأردنية، وزارة التربية والتعليم الأردنية، بوابة BTEC الرسمية، والجهات الرسمية أو Pearson عندما تكون ذات صلة.
 إذا لم توجد إجابة موثوقة، قل بوضوح إن المعلومات غير مؤكدة بدل اختلاقها.
 أجب بالعربية وبأسلوب واضح لطالب المدرسة.
 إذا كانت المعلومة متغيرة بمرور الوقت، اذكر أنها تعتمد على آخر تعليمات منشورة.
 لا تجيب عن مواضيع خارج BTEC في الأردن.`,
-   input:`تصنيف السؤال: ${intent||"عام"}\nسؤال الطالب: ${question}`
+   input:question
   });
 
   const sources=extractWebSources(response);
@@ -290,31 +197,18 @@ app.post("/api/ask",async(req,res)=>{
    source:"البحث على الإنترنت + الذكاء الاصطناعي",
    answer,
    sources,
-   searchedWeb:true,
-   intent
+   searchedWeb:true
   });
  }catch(err){
   console.error("BTEC AI error:",err);
-  const status=Number(err?.status||err?.statusCode||500);
-  const apiMessage=String(err?.error?.message||err?.message||"");
-  let userError="تعذر تنفيذ البحث على الإنترنت والذكاء الاصطناعي حاليًا.";
-  if(status===401) userError="مفتاح OpenAI غير صالح أو غير مقبول. تأكد من OPENAI_API_KEY ثم أعد تشغيل الـBackend.";
-  else if(status===403) userError="مفتاح OpenAI لا يملك صلاحية استخدام Web Search حاليًا.";
-  else if(status===429) userError="تم تجاوز حد الاستخدام أو لا يوجد رصيد كافٍ في حساب OpenAI حاليًا.";
-  else if(/web_search|tool/i.test(apiMessage)) userError="تعذر تشغيل أداة البحث على الإنترنت من OpenAI. تأكد من أن حسابك والنموذج يدعمان Web Search.";
-  if(process.env.NODE_ENV!=="production" && apiMessage) userError += `\n\nتفاصيل تقنية: ${apiMessage.slice(0,500)}`;
-  return res.status(status>=400&&status<600?status:500).json({ok:false,error:userError});
+  return res.status(500).json({
+   ok:false,
+   error:"تعذر تنفيذ البحث على الإنترنت والذكاء الاصطناعي حاليًا. تأكد من مفتاح OpenAI واتصال الإنترنت ثم حاول مرة أخرى."
+  });
  }
 });
 
-const site = __dirname;
-
+const site=path.join(__dirname,"..","BTEC JO");
 app.use(express.static(site));
-
-app.use((req, res, next) => {
-  if (req.method === "GET" && !req.path.startsWith("/api/")) {
-    return res.sendFile(path.join(site, "index.html"));
-  }
-  next();
-});
+app.use((req,res,next)=>{if(req.method==="GET"&&!req.path.startsWith("/api/"))return res.sendFile(path.join(site,"index.html"));next();});
 app.listen(PORT,"0.0.0.0",()=>console.log(`BTEC JO server listening on ${PORT}`));

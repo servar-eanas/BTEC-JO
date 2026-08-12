@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://btec-jo.onrender.com/sitemap.xml

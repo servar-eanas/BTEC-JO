@@ -49,16 +49,13 @@ function addMessage(text,user=false,source=""){
 }
 async function backendAnswer(q){
  const cfg=window.btecAIConfig||{};const base=(cfg.apiBaseUrl||"").replace(/\/$/,"");
- try{const r=await fetch(base+"/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q})});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"backend error");return d}catch(e){return{ok:false,error:e.message}}
+ try{const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(), cfg.timeoutMs||30000); const r=await fetch(base+"/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q}),signal:controller.signal}); clearTimeout(timer);const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"backend error");return d}catch(e){return{ok:false,error:e.message}}
 }
 async function ask(q){
  if(!q)return;addMessage(q,true);typing?.classList.remove("hidden");
- // The backend is the single source of truth. Do not run the old
- // browser-side fuzzy matcher here because it can return an unrelated
- // answer before the backend gets a chance to perform Web Search.
- const placeholder=addMessage("جاري البحث في قاعدة المعرفة ثم المصادر والذكاء الاصطناعي…",false,"بحث + AI");
- const result=await backendAnswer(q);
- typing?.classList.add("hidden");
+ const local=localMatch(q);
+ if(local){setTimeout(()=>{typing?.classList.add("hidden");addMessage(local.item.answer,false,"قاعدة المعرفة الداخلية");points+=5;localStorage.setItem("btecjo-points",points);if(pointsEl)pointsEl.textContent=points},350);return}
+ const placeholder=addMessage("جاري البحث في المصادر والذكاء الاصطناعي…",false,"بحث + AI");const result=await backendAnswer(q);typing?.classList.add("hidden");
  if(result.ok){
   placeholder.textContent=result.answer||"لم يتم العثور على إجابة.";
   const source=placeholder.parentElement.querySelector(".ai-source");

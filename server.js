@@ -307,7 +307,14 @@ app.post("/api/ask",async(req,res)=>{
  }
 });
 
-const site=path.join(__dirname,"..","BTEC JO");
+const site = __dirname;
+
 app.use(express.static(site));
-app.use((req,res,next)=>{if(req.method==="GET"&&!req.path.startsWith("/api/"))return res.sendFile(path.join(site,"index.html"));next();});
+
+app.use((req, res, next) => {
+  if (req.method === "GET" && !req.path.startsWith("/api/")) {
+    return res.sendFile(path.join(site, "index.html"));
+  }
+  next();
+});
 app.listen(PORT,"0.0.0.0",()=>console.log(`BTEC JO server listening on ${PORT}`));

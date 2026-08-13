@@ -1,24 +1,19 @@
-# BTEC JO — Full Stack AI
+BTEC JO COMPLETE V5
 
-## Local
-1. Install Node.js.
-2. Copy `.env.example` to `.env`.
-3. Put your OpenAI API key in `.env`.
-4. Run `npm install`.
-5. Run `npm start`.
-6. Open `http://localhost:10000`.
+الإضافات:
+1) daily-motivation.html
+- تحدي يومي حسب التخصص.
+- نقاط + مستوى + streak.
+- يحفظ الإنجازات في localStorage.
+- مهام عملية صغيرة تساعد الطالب على بناء Portfolio ومهارات التخصص.
 
-## AI flow
-Internal 100-question database -> if no match -> Backend -> OpenAI Responses API + web search -> answer.
-The API key is never placed in frontend JavaScript.
+2) quick-quiz.html
+- اختبار سريع من 3 أسئلة بالضبط.
+- بنك أسئلة حسب التخصص.
+- اختيار عشوائي للأسئلة.
+- بعد اختيار الإجابة يتم إغلاق جميع الخيارات.
+- بعد السؤال الثالث تظهر النتيجة وتُغلق الجولة نهائيًا.
+- لا توجد إمكانية اختيار إجابات إضافية في نفس الجولة.
 
-## Render
-Create a Web Service from this repo. Build: `npm install`; Start: `npm start`; add `OPENAI_API_KEY` in Environment Variables.
-
-
-## Production notes
-- Do not commit `.env` or an OpenAI API key.
-- On Render set `OPENAI_API_KEY` to a real ASCII OpenAI API key and keep `OPENAI_MODEL=gpt-5-mini`.
-- The backend validates the key before constructing the OpenAI client, preventing Unicode placeholder values from causing the Undici ByteString error.
-- Web search is performed server-side so the API key is never exposed to visitors.
-- PWA files, sitemap and robots.txt are served from `BTEC JO/`.
+3) specialties-encyclopedia.html
+- موسوعة التخصصات المستقلة من الإصدار السابق.

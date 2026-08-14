@@ -208,7 +208,93 @@ app.post("/api/ask",async(req,res)=>{
  }
 });
 
-const site=path.join(__dirname,"..","BTEC JO");
+/* =========================
+   Frontend path resolver
+========================= */
+
+const frontendCandidates = [
+  // إذا backend موجود بجانب BTEC JO
+  path.resolve(__dirname, "../BTEC JO"),
+
+  // إذا Render وضع المشروع داخل src
+  path.resolve(__dirname, "../src/BTEC JO"),
+
+  // إذا Current Working Directory هو المشروع الرئيسي
+  path.resolve(process.cwd(), "BTEC JO"),
+
+  // إذا Current Working Directory داخل src
+  path.resolve(process.cwd(), "src/BTEC JO"),
+
+  // إذا الموقع نفسه هو Current Working Directory
+  path.resolve(process.cwd()),
+
+  // احتياط إضافي
+  path.resolve(__dirname)
+];
+
+const site = frontendCandidates.find((candidate) =>
+  fs.existsSync(
+    path.join(candidate, "index.html")
+  )
+);
+
+if (!site) {
+  console.error(
+    "BTEC JO frontend NOT FOUND."
+  );
+
+  console.error(
+    "Checked paths:"
+  );
+
+  frontendCandidates.forEach((candidate) => {
+    console.error(" -", candidate);
+  });
+
+} else {
+
+  console.log(
+    "BTEC JO frontend path:",
+    site
+  );
+
+  app.use(
+    express.static(site)
+  );
+
+  app.use((req, res, next) => {
+
+    if (
+      req.method === "GET" &&
+      !req.path.startsWith("/api/")
+    ) {
+
+      return res.sendFile(
+        path.join(
+          site,
+          "index.html"
+        )
+      );
+    }
+
+    next();
+
+  });
+}
+
+/* =========================
+   Start Server
+========================= */
+
+app.listen(
+  PORT,
+  "0.0.0.0",
+  () => {
+    console.log(
+      `BTEC JO server listening on ${PORT}`
+    );
+  }
+);
 app.use(express.static(site));
 app.use((req,res,next)=>{if(req.method==="GET"&&!req.path.startsWith("/api/"))return res.sendFile(path.join(site,"index.html"));next();});
 app.listen(PORT,"0.0.0.0",()=>console.log(`BTEC JO server listening on ${PORT}`));

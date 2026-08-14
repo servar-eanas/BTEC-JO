@@ -8,59 +8,164 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+/* =========================================================
+   BASIC SETUP
+========================================================= */
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = Number(process.env.PORT || 10000);
-const FRONTEND_URL = (process.env.FRONTEND_URL || "").trim();
 
-const knowledge = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "knowledge.json"),
-    "utf8"
-  )
+const PORT = Number(
+  process.env.PORT || 10000
 );
 
-app.set("trust proxy", 1);
+const FRONTEND_URL =
+  String(
+    process.env.FRONTEND_URL || ""
+  ).trim();
+
+/* =========================================================
+   KNOWLEDGE BASE
+========================================================= */
+
+const knowledgePath = path.join(
+  __dirname,
+  "knowledge.json"
+);
+
+let knowledge = [];
+
+try {
+  if (fs.existsSync(knowledgePath)) {
+    knowledge = JSON.parse(
+      fs.readFileSync(
+        knowledgePath,
+        "utf8"
+      )
+    );
+  } else {
+    console.warn(
+      "knowledge.json not found:",
+      knowledgePath
+    );
+  }
+} catch (error) {
+  console.error(
+    "Failed to load knowledge.json:",
+    error
+  );
+
+  knowledge = [];
+}
+
+/* =========================================================
+   SECURITY / EXPRESS
+========================================================= */
+
+app.set(
+  "trust proxy",
+  1
+);
 
 app.use(
   helmet({
     crossOriginResourcePolicy: false,
+
     contentSecurityPolicy: {
       directives: {
-        "script-src": ["'self'"],
-        "script-src-attr": ["'unsafe-inline'"]
+        "script-src": [
+          "'self'"
+        ],
+
+        "script-src-attr": [
+          "'unsafe-inline'"
+        ]
       }
     }
   })
 );
 
-app.use(express.json({ limit: "20kb" }));
+app.use(
+  express.json({
+    limit: "20kb"
+  })
+);
+
+/* =========================================================
+   CORS
+========================================================= */
 
 app.use(
   cors({
-    origin: (origin, cb) => {
-      if (
-        !origin ||
-        !FRONTEND_URL ||
-        origin === FRONTEND_URL
-      ) {
-        return cb(null, true);
+    origin: (
+      origin,
+      callback
+    ) => {
+      /*
+       * Same-origin browser requests usually have no
+       * Origin header in some cases, so allow them.
+       */
+
+      if (!origin) {
+        return callback(
+          null,
+          true
+        );
       }
 
-      cb(new Error("CORS blocked"));
+      /*
+       * When FRONTEND_URL is empty, allow requests.
+       * This is useful because the frontend and backend
+       * are served from the same Render service.
+       */
+
+      if (!FRONTEND_URL) {
+        return callback(
+          null,
+          true
+        );
+      }
+
+      if (
+        origin ===
+        FRONTEND_URL
+      ) {
+        return callback(
+          null,
+          true
+        );
+      }
+
+      return callback(
+        new Error(
+          "CORS blocked"
+        )
+      );
     }
   })
 );
+
+/* =========================================================
+   API RATE LIMIT
+========================================================= */
 
 app.use(
   "/api/",
   rateLimit({
-    windowMs: 60000,
-    max: Number(process.env.RATE_LIMIT || 30),
-    standardHeaders: "draft-8",
-    legacyHeaders: false,
+    windowMs: 60 * 1000,
+
+    max: Number(
+      process.env.RATE_LIMIT || 30
+    ),
+
+    standardHeaders:
+      "draft-8",
+
+    legacyHeaders:
+      false,
+
     message: {
       error:
         "تم تجاوز عدد الطلبات مؤقتًا، حاول بعد قليل."
@@ -68,212 +173,278 @@ app.use(
   })
 );
 
-/* =========================
-   Text normalization
-========================= */
+/* =========================================================
+   TEXT HELPERS
+========================================================= */
 
-const normalize = (s) =>
-  String(s || "")
+function normalize(value) {
+  return String(
+    value || ""
+  )
     .toLowerCase()
     .replace(/[إأآ]/g, "ا")
     .replace(/ة/g, "ه")
     .replace(/ى/g, "ي")
-    .replace(/[ًٌٍَُِّْـ]/g, "")
-    .replace(/[^\u0600-\u06FFa-z0-9\s]/gi, " ")
-    .replace(/\s+/g, " ")
+    .replace(
+      /[ًٌٍَُِّْـ]/g,
+      ""
+    )
+    .replace(
+      /[^\u0600-\u06FFa-z0-9\s]/gi,
+      " "
+    )
+    .replace(
+      /\s+/g,
+      " "
+    )
     .trim();
+}
 
-const stop = new Set([
-  "ما",
-  "هو",
-  "هي",
-  "هل",
-  "كيف",
-  "شو",
-  "ايش",
-  "عن",
-  "في",
-  "من",
-  "على",
-  "الى",
-  "و",
-  "او",
-  "ال",
-  "هذا",
-  "هذه",
-  "ذلك"
-]);
+const stopWords =
+  new Set([
+    "ما",
+    "هو",
+    "هي",
+    "هل",
+    "كيف",
+    "شو",
+    "ايش",
+    "عن",
+    "في",
+    "من",
+    "على",
+    "الى",
+    "و",
+    "او",
+    "ال",
+    "هذا",
+    "هذه",
+    "ذلك"
+  ]);
 
-const tokens = (s) =>
-  normalize(s)
+function tokens(value) {
+  return normalize(value)
     .split(" ")
     .filter(
-      (x) =>
-        x.length > 1 &&
-        !stop.has(x)
+      (token) =>
+        token.length > 1 &&
+        !stopWords.has(token)
+    );
+}
+
+/* =========================================================
+   P / M / D DETECTION
+========================================================= */
+
+function detectCriterionLevel(
+  question
+) {
+  const n =
+    normalize(question);
+
+  if (
+    /\b(m|merit)\s*\d*\b/.test(
+      n
+    ) ||
+    /ميري?ت|جداره|الجداره/.test(
+      n
+    )
+  ) {
+    return "M";
+  }
+
+  if (
+    /\b(d|distinction)\s*\d*\b/.test(
+      n
+    ) ||
+    /ديستنكشن|تميز|التميز/.test(
+      n
+    )
+  ) {
+    return "D";
+  }
+
+  if (
+    /\b(p|pass)\s*\d*\b/.test(
+      n
+    ) ||
+    /باس|اجتياز/.test(
+      n
+    )
+  ) {
+    return "P";
+  }
+
+  return null;
+}
+
+function candidateLevel(
+  text
+) {
+  return detectCriterionLevel(
+    text
+  );
+}
+
+/* =========================================================
+   INTERNAL KNOWLEDGE SEARCH
+========================================================= */
+
+function localMatch(
+  question
+) {
+  const requestedLevel =
+    detectCriterionLevel(
+      question
     );
 
-/* =========================
-   Detect P / M / D
-========================= */
-
-function detectCriterionLevel(question) {
-  const n = normalize(question);
+  const queryTokens =
+    tokens(question);
 
   if (
-    /\b(m|merit)\s*\d*\b/.test(n) ||
-    /ميري?ت|جداره|الجداره/.test(n)
+    !queryTokens.length &&
+    !requestedLevel
   ) {
-    return "M";
-  }
-
-  if (
-    /\b(d|distinction)\s*\d*\b/.test(n) ||
-    /ديستنكشن|تميز|التميز/.test(n)
-  ) {
-    return "D";
-  }
-
-  if (
-    /\b(p|pass)\s*\d*\b/.test(n) ||
-    /باس|اجتياز/.test(n)
-  ) {
-    return "P";
-  }
-
-  return null;
-}
-
-function candidateLevel(text) {
-  const n = normalize(text);
-
-  if (
-    /\b(m|merit)\s*\d*\b/.test(n) ||
-    /ميري?ت|جداره|الجداره/.test(n)
-  ) {
-    return "M";
-  }
-
-  if (
-    /\b(d|distinction)\s*\d*\b/.test(n) ||
-    /ديستنكشن|تميز|التميز/.test(n)
-  ) {
-    return "D";
-  }
-
-  if (
-    /\b(p|pass)\s*\d*\b/.test(n) ||
-    /باس|اجتياز/.test(n)
-  ) {
-    return "P";
-  }
-
-  return null;
-}
-
-/* =========================
-   Internal knowledge search
-========================= */
-
-function localMatch(q) {
-  const requestedLevel =
-    detectCriterionLevel(q);
-
-  const a = tokens(q);
-
-  if (!a.length && !requestedLevel) {
     return null;
   }
 
   let best = null;
   let bestScore = 0;
 
-  for (const item of knowledge) {
-    for (const candidate of item.keys || []) {
+  for (
+    const item of knowledge
+  ) {
+    for (
+      const candidate of
+        item.keys || []
+    ) {
       const level =
-        candidateLevel(candidate);
+        candidateLevel(
+          candidate
+        );
+
+      /*
+       * If the user asks specifically for M,
+       * do not return a P answer.
+       */
 
       if (
         requestedLevel &&
         level &&
-        level !== requestedLevel
+        level !==
+          requestedLevel
       ) {
         continue;
       }
+
+      /*
+       * Avoid generic answers for explicit M/D
+       * where the candidate has no criterion level.
+       */
 
       if (
         requestedLevel &&
         !level &&
         requestedLevel !== "P" &&
         /تحقيق|معنى|اعمل|اسوي/.test(
-          normalize(q)
+          normalize(question)
         )
       ) {
         continue;
       }
 
-      const b =
-        new Set(tokens(candidate));
+      const candidateTokens =
+        new Set(
+          tokens(candidate)
+        );
 
-      let hit = 0;
+      let hits = 0;
 
-      for (const t of a) {
-        if (b.has(t)) {
-          hit += 2;
+      for (
+        const token of
+          queryTokens
+      ) {
+        if (
+          candidateTokens.has(
+            token
+          )
+        ) {
+          hits += 2;
         } else {
-          for (const x of b) {
+          for (
+            const c of
+              candidateTokens
+          ) {
             if (
-              x.includes(t) ||
-              t.includes(x)
+              c.includes(
+                token
+              ) ||
+              token.includes(
+                c
+              )
             ) {
-              hit += 0.7;
+              hits += 0.7;
               break;
             }
           }
         }
       }
 
-      const nq = normalize(q);
-      const nc = normalize(candidate);
-
       const exact =
-        nq === nc ? 8 : 0;
+        normalize(question) ===
+        normalize(candidate)
+          ? 8
+          : 0;
 
       const levelBoost =
         requestedLevel &&
-        level === requestedLevel
+        level ===
+          requestedLevel
           ? 4
           : 0;
 
       const score =
-        (a.length
-          ? hit / a.length
-          : 0) +
+        (
+          queryTokens.length
+            ? hits /
+              queryTokens.length
+            : 0
+        ) +
         exact +
         levelBoost;
 
-      if (score > bestScore) {
+      if (
+        score >
+        bestScore
+      ) {
         bestScore = score;
 
         best = {
-          answer: item.answer,
-          matchedQuestion: candidate
+          answer:
+            item.answer,
+          matchedQuestion:
+            candidate
         };
       }
     }
   }
 
-  return bestScore >= 0.48
-    ? {
-        ...best,
-        score: bestScore
-      }
-    : null;
+  if (
+    bestScore < 0.48 ||
+    !best
+  ) {
+    return null;
+  }
+
+  return {
+    ...best,
+    score: bestScore
+  };
 }
 
-/* =========================
-   BTEC scope
-========================= */
+/* =========================================================
+   BTEC SCOPE
+========================================================= */
 
 const btecTerms = [
   "btec",
@@ -297,33 +468,61 @@ const btecTerms = [
   "pearson"
 ];
 
-const btecOnly = (q) => {
-  const n = normalize(q);
+function isBtecQuestion(
+  question
+) {
+  const n =
+    normalize(question);
+
+  if (
+    btecTerms.some(
+      (term) =>
+        n.includes(
+          normalize(term)
+        )
+    )
+  ) {
+    return true;
+  }
+
+  if (
+    /\b(p|m|d)\s*\d*\b/i.test(
+      n
+    )
+  ) {
+    return true;
+  }
 
   return (
-    btecTerms.some((t) =>
-      n.includes(normalize(t))
-    ) ||
-    /\b(p|m|d)\s*\d*\b/i.test(n) ||
-    (
-      /كيف|شو|ما|هل/.test(n) &&
-      /وحده|معيار|واجب|تخصص|دراسه|توجيهي|بيتک|بيتك/.test(
-        n
-      )
+    /كيف|شو|ما|هل/.test(n) &&
+    /وحده|معيار|واجب|تخصص|دراسه|توجيهي|بيتک|بيتك/.test(
+      n
     )
   );
-};
+}
 
-/* =========================
-   OpenAI
-========================= */
+/* =========================================================
+   OPENAI
+========================================================= */
 
 const apiKey =
-  (process.env.OPENAI_API_KEY || "").trim();
+  String(
+    process.env.OPENAI_API_KEY ||
+      ""
+  ).trim();
 
-const looksLikeOpenAIKey = (key) => {
+function looksLikeOpenAIKey(
+  key
+) {
+  if (!key) {
+    return false;
+  }
+
+  /*
+   * Reject common placeholders.
+   */
+
   if (
-    !key ||
     /ضع[_ ]?مفتاحك|your[_ ]?api[_ ]?key|xxxxxxxx|sk-?x+/i.test(
       key
     )
@@ -331,46 +530,71 @@ const looksLikeOpenAIKey = (key) => {
     return false;
   }
 
-  if (!/^[\x00-\x7F]+$/.test(key)) {
+  /*
+   * OpenAI auth header must be ASCII.
+   */
+
+  if (
+    !/^[\x00-\x7F]+$/.test(
+      key
+    )
+  ) {
     return false;
   }
 
   return /^(sk|sk-proj)-[A-Za-z0-9_-]{20,}$/.test(
     key
   );
-};
+}
 
-const client = looksLikeOpenAIKey(apiKey)
-  ? new OpenAI({ apiKey })
-  : null;
+const openai =
+  looksLikeOpenAIKey(
+    apiKey
+  )
+    ? new OpenAI({
+        apiKey
+      })
+    : null;
 
-/* =========================
-   Health
-========================= */
+/* =========================================================
+   HEALTH CHECK
+========================================================= */
 
 app.get(
   "/api/health",
-  (req, res) =>
+  (req, res) => {
     res.json({
       ok: true,
-      knowledge: knowledge.length,
-      aiConfigured: Boolean(client),
+
+      knowledge:
+        knowledge.length,
+
+      aiConfigured:
+        Boolean(openai),
+
       webSearchConfigured:
-        Boolean(client),
+        Boolean(openai),
+
       model:
         process.env.OPENAI_MODEL ||
         "gpt-5-mini"
-    })
+    });
+  }
 );
 
-/* =========================
-   Web sources
-========================= */
+/* =========================================================
+   WEB SOURCES
+========================================================= */
 
-function extractWebSources(response) {
-  const out = [];
+function extractWebSources(
+  response
+) {
+  const sources = [];
 
-  for (const item of response?.output || []) {
+  for (
+    const item of
+      response?.output || []
+  ) {
     if (
       item?.type !==
       "web_search_call"
@@ -378,34 +602,51 @@ function extractWebSources(response) {
       continue;
     }
 
-    const sources =
+    const list =
       item?.action?.sources ||
       item?.sources ||
       [];
 
-    for (const src of sources) {
+    for (
+      const source of
+        list
+    ) {
       if (
-        src?.url &&
-        !out.some(
-          (x) => x.url === src.url
+        !source?.url
+      ) {
+        continue;
+      }
+
+      if (
+        sources.some(
+          (item) =>
+            item.url ===
+            source.url
         )
       ) {
-        out.push({
-          title:
-            src.title ||
-            src.url,
-          url: src.url
-        });
+        continue;
       }
+
+      sources.push({
+        title:
+          source.title ||
+          source.url,
+
+        url:
+          source.url
+      });
     }
   }
 
-  return out.slice(0, 8);
+  return sources.slice(
+    0,
+    8
+  );
 }
 
-/* =========================
-   Ask AI
-========================= */
+/* =========================================================
+   AI ASK
+========================================================= */
 
 app.post(
   "/api/ask",
@@ -413,51 +654,75 @@ app.post(
     try {
       const question =
         String(
-          req.body?.question || ""
+          req.body?.question ||
+            ""
         ).trim();
 
       if (!question) {
-        return res.status(400).json({
+        return res.status(
+          400
+        ).json({
           ok: false,
+
           error:
             "اكتب سؤالك أولًا."
         });
       }
 
-      if (question.length > 1000) {
-        return res.status(413).json({
+      if (
+        question.length >
+        1000
+      ) {
+        return res.status(
+          413
+        ).json({
           ok: false,
+
           error:
             "السؤال طويل جدًا."
         });
       }
 
-      /* 1) Internal knowledge */
+      /*
+       * 1) Internal knowledge
+       */
 
       const local =
-        localMatch(question);
+        localMatch(
+          question
+        );
 
       if (local) {
         return res.json({
           ok: true,
+
           source:
             "قاعدة المعرفة الداخلية",
-          answer: local.answer,
+
+          answer:
+            local.answer,
+
           matchedQuestion:
             local.matchedQuestion,
-          searchedWeb: false
+
+          searchedWeb:
+            false
         });
       }
 
-      /* 2) P/M/D fallback */
+      /*
+       * 2) Explicit P/M/D fallback
+       */
 
       const requestedLevel =
         detectCriterionLevel(
           question
         );
 
-      if (requestedLevel) {
-        const levelAnswers = {
+      if (
+        requestedLevel
+      ) {
+        const answers = {
           P:
             "لتحقيق P (Pass)، اقرأ نص معيار P نفسه ومواصفة الوحدة، وحدد كل جزء مطلوب، ونفّذه مع دليل واضح يثبت تحقيقه. عدد الصفحات وحده لا يضمن تحقيق P.",
 
@@ -470,43 +735,63 @@ app.post(
 
         return res.json({
           ok: true,
+
           source:
             "قاعدة المعرفة الداخلية",
+
           answer:
-            levelAnswers[
+            answers[
               requestedLevel
             ],
+
           matchedQuestion:
             `${requestedLevel} level fallback`,
-          searchedWeb: false
+
+          searchedWeb:
+            false
         });
       }
 
-      /* 3) BTEC scope */
+      /*
+       * 3) Only answer BTEC questions.
+       */
 
-      if (!btecOnly(question)) {
+      if (
+        !isBtecQuestion(
+          question
+        )
+      ) {
         return res.json({
           ok: true,
+
           source:
             "نطاق BTEC JO",
+
           answer:
             "أنا مخصص لأسئلة نظام BTEC في الأردن فقط. اسألني عن الوحدات، المعايير، الواجبات، التخصصات، الدراسة، التقييم أو الفرص بعد BTEC.",
-          searchedWeb: false
+
+          searchedWeb:
+            false
         });
       }
 
-      /* 4) AI */
+      /*
+       * 4) OpenAI
+       */
 
-      if (!client) {
-        return res.status(503).json({
+      if (!openai) {
+        return res.status(
+          503
+        ).json({
           ok: false,
+
           error:
-            "خدمة Web Search + AI غير مفعلة. ضع مفتاح OpenAI الحقيقي في Environment Variables في Render."
+            "خدمة Web Search + AI غير مفعلة. تأكد من وضع OPENAI_API_KEY الحقيقي في Environment Variables داخل Render."
         });
       }
 
       const response =
-        await client.responses.create(
+        await openai.responses.create(
           {
             model:
               process.env.OPENAI_MODEL ||
@@ -514,15 +799,22 @@ app.post(
 
             tools: [
               {
-                type: "web_search",
+                type:
+                  "web_search",
 
                 search_context_size:
                   "high",
 
                 user_location: {
-                  type: "approximate",
-                  city: "Amman",
-                  country: "JO",
+                  type:
+                    "approximate",
+
+                  city:
+                    "Amman",
+
+                  country:
+                    "JO",
+
                   timezone:
                     "Asia/Amman"
                 }
@@ -536,28 +828,28 @@ app.post(
 أنت BTEC JO AI، مساعد متخصص بنظام BTEC في الأردن فقط.
 
 السؤال لم يوجد في قاعدة المعرفة الداخلية،
-لذلك يجب استخدام Web Search قبل الإجابة.
+لذلك استخدم Web Search قبل الإجابة.
 
-ابحث فعليًا في الإنترنت ولا تقل "غير موجود"
-لمجرد أنه غير موجود في قاعدة المعرفة.
+ابحث فعليًا في الإنترنت.
 
-أعط الأولوية للمصادر الرسمية الأردنية،
-وزارة التربية والتعليم الأردنية،
-بوابة BTEC الرسمية،
-Pearson والمصادر الرسمية ذات الصلة.
+أعط الأولوية للمصادر الرسمية:
+- وزارة التربية والتعليم الأردنية
+- بوابة BTEC الأردنية
+- Pearson
+- المصادر الحكومية والرسمية
 
-إذا لم تجد معلومات موثوقة،
-اذكر ذلك بصراحة ولا تخترع معلومات.
+إذا لم تجد معلومة موثوقة، قل ذلك بوضوح ولا تخترع معلومات.
 
 أجب بالعربية وبأسلوب واضح لطالب المدرسة.
 
-إذا كانت المعلومة متغيرة بمرور الوقت،
-اذكر أنها تعتمد على آخر تعليمات منشورة.
+إذا كانت المعلومة قد تتغير حسب السنة الدراسية،
+اذكر ذلك بوضوح.
 
 لا تجيب عن مواضيع خارج BTEC في الأردن.
 `,
 
-            input: question
+            input:
+              question
           }
         );
 
@@ -566,28 +858,37 @@ Pearson والمصادر الرسمية ذات الصلة.
           response
         );
 
-      const answer = (
-        response.output_text ||
-        "لم أتمكن من استخراج إجابة من نتائج البحث."
-      ).trim();
+      const answer =
+        String(
+          response.output_text ||
+            "لم أتمكن من استخراج إجابة من نتائج البحث."
+        ).trim();
 
       return res.json({
         ok: true,
+
         source:
           "البحث على الإنترنت + الذكاء الاصطناعي",
+
         answer,
+
         sources,
-        searchedWeb: true
+
+        searchedWeb:
+          true
       });
 
-    } catch (err) {
+    } catch (error) {
       console.error(
         "BTEC AI error:",
-        err
+        error
       );
 
-      return res.status(500).json({
+      return res.status(
+        500
+      ).json({
         ok: false,
+
         error:
           "تعذر تنفيذ البحث على الإنترنت والذكاء الاصطناعي حاليًا. تأكد من مفتاح OpenAI واتصال الإنترنت ثم حاول مرة أخرى."
       });
@@ -595,82 +896,201 @@ Pearson والمصادر الرسمية ذات الصلة.
   }
 );
 
-/* =========================
-   Frontend
-   المشروع عندك كله في الجذر
-========================= */
+/* =========================================================
+   FRONTEND
+   ملفات BTEC-JO كلها موجودة في نفس مجلد server.js
+========================================================= */
 
-const site = __dirname;
+const site =
+  __dirname;
+
+const indexPath =
+  path.join(
+    site,
+    "index.html"
+  );
 
 console.log(
   "BTEC JO frontend path:",
   site
 );
 
+console.log(
+  "BTEC JO index path:",
+  indexPath
+);
+
 if (
   !fs.existsSync(
-    path.join(
-      site,
-      "index.html"
-    )
+    indexPath
   )
 ) {
   console.error(
-    "BTEC JO index.html NOT FOUND at:",
-    path.join(
-      site,
-      "index.html"
-    )
+    "BTEC JO index.html NOT FOUND:",
+    indexPath
   );
 }
 
-/* Static files */
+/*
+ * Serve all static files:
+ *
+ * /style.css
+ * /script.js
+ * /ai.html
+ * /ai.js
+ * /student-dashboard.html
+ * /sources.html
+ * /assets/*
+ * etc.
+ */
 
 app.use(
-  express.static(site)
+  express.static(
+    site,
+    {
+      index: false
+    }
+  )
 );
 
-/* Frontend routes */
+/* =========================================================
+   FRONTEND FALLBACK
+   Express 5 compatible
+========================================================= */
 
-app.get(
-  "*",
+app.use(
   (req, res, next) => {
+    /*
+     * Never let this fallback handle API requests.
+     */
+
     if (
-      req.path.startsWith("/api/")
+      req.path.startsWith(
+        "/api/"
+      )
     ) {
       return next();
     }
 
-    const requestedFile =
-      path.join(
-        site,
+    /*
+     * If the requested URL contains a filename,
+     * try to serve the corresponding existing file.
+     */
+
+    const cleanPath =
+      decodeURIComponent(
         req.path
       );
 
+    const requestedPath =
+      path.normalize(
+        path.join(
+          site,
+          cleanPath
+        )
+      );
+
+    /*
+     * Security check:
+     * prevent escaping the site folder.
+     */
+
+    const sitePrefix =
+      path.resolve(
+        site
+      ) + path.sep;
+
+    const resolvedRequested =
+      path.resolve(
+        requestedPath
+      );
+
     if (
-      req.path !== "/" &&
-      fs.existsSync(requestedFile) &&
+      resolvedRequested.startsWith(
+        sitePrefix
+      ) &&
+      fs.existsSync(
+        resolvedRequested
+      ) &&
       fs.statSync(
-        requestedFile
+        resolvedRequested
       ).isFile()
     ) {
       return res.sendFile(
-        requestedFile
+        resolvedRequested
       );
     }
 
+    /*
+     * Anything else goes to homepage.
+     */
+
     return res.sendFile(
-      path.join(
-        site,
-        "index.html"
-      )
+      indexPath
     );
   }
 );
 
-/* =========================
-   Start server
-========================= */
+/* =========================================================
+   404 / ERROR HANDLER
+========================================================= */
+
+app.use(
+  (req, res) => {
+    if (
+      req.path.startsWith(
+        "/api/"
+      )
+    ) {
+      return res.status(
+        404
+      ).json({
+        ok: false,
+        error:
+          "API endpoint not found."
+      });
+    }
+
+    return res.sendFile(
+      indexPath
+    );
+  }
+);
+
+app.use(
+  (
+    error,
+    req,
+    res,
+    next
+  ) => {
+    console.error(
+      "Server error:",
+      error
+    );
+
+    if (
+      res.headersSent
+    ) {
+      return next(
+        error
+      );
+    }
+
+    return res.status(
+      500
+    ).json({
+      ok: false,
+
+      error:
+        "حدث خطأ داخلي في السيرفر."
+    });
+  }
+);
+
+/* =========================================================
+   START SERVER
+========================================================= */
 
 app.listen(
   PORT,

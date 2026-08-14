@@ -2,106 +2,146 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BTEC JO | لوحة الطالب</title>
-<meta name="description" content="لوحة الطالب في BTEC JO لمتابعة الصف والتخصص والتقدم والمفضلة وأدوات الدراسة.">
-<link rel="canonical" href="https://btec-jo.onrender.com/student-dashboard.html">
-<link rel="icon" type="image/svg+xml" href="/assets/btec-jo-logo.svg">
-<link rel="apple-touch-icon" href="/assets/btec-jo-logo.svg">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="navigation.css">
+<meta name="description" content="لوحة طالب BTEC JO لمتابعة الصف والتخصص والتقدم والمفضلة وأدوات الدراسة.">
+<link rel="icon" type="image/svg+xml" href="/btec-jo-logo.svg">
+<link rel="apple-touch-icon" href="/btec-jo-logo.svg">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="student-dashboard.css">
+<link rel="stylesheet" href="navigation.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--sd-bg:#f4f7fb;--sd-surface:#fff;--sd-surface2:#f8faff;--sd-text:#152036;--sd-muted:#718096;--sd-border:#e4eaf3;--sd-brand:#315eea;--sd-brand2:#00a8e8;--sd-good:#18a96b;--sd-gold:#f2b72d;--sd-danger:#e04c5f;--sd-shadow:0 16px 42px rgba(33,54,94,.08)}
+body.sd-page{margin:0;background:var(--sd-bg);color:var(--sd-text);font-family:"Cairo",Tahoma,Arial,sans-serif;overflow-x:hidden}
+body.sd-page.sd-dark{--sd-bg:#0a1020;--sd-surface:#111a2c;--sd-surface2:#17223a;--sd-text:#eef4ff;--sd-muted:#a6b3c9;--sd-border:#283650;--sd-shadow:0 18px 55px rgba(0,0,0,.25)}
+.sd-shell{max-width:1220px;margin:auto;padding:24px 22px 110px}.sd-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.sd-back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--sd-text);background:var(--sd-surface);border:1px solid var(--sd-border);border-radius:13px;padding:10px 14px;font-weight:800;font-size:12px;box-shadow:var(--sd-shadow)}.sd-top-actions{display:flex;gap:8px}.sd-icon-btn{width:42px;height:42px;border:1px solid var(--sd-border);border-radius:13px;background:var(--sd-surface);color:var(--sd-text);cursor:pointer;display:grid;place-items:center;font-size:16px}.sd-hero{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px;border-radius:26px;background:linear-gradient(135deg,#111d3c,#315eea 62%,#00a8e8);color:#fff;box-shadow:0 24px 60px rgba(34,62,128,.22);margin-bottom:18px}.sd-kicker{font-size:10px;font-weight:900;color:#cfe0ff;margin-bottom:5px}.sd-hero h1{margin:0 0 8px;font-size:32px;line-height:1.25}.sd-hero p{margin:0;color:#dce7ff;font-size:12px;line-height:1.9;max-width:700px}.sd-actions{display:flex;flex-wrap:wrap;gap:8px}.sd-hero .sd-actions{justify-content:flex-start}.sd-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:0 15px;border-radius:12px;border:1px solid transparent;text-decoration:none;font:800 11px "Cairo",Tahoma,Arial,sans-serif;cursor:pointer;transition:.18s ease}.sd-btn:hover{transform:translateY(-1px)}.sd-btn.primary{background:#fff;color:#1a3a87}.sd-btn.ghost{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.18);color:#fff}.sd-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}.sd-stat{display:flex;align-items:center;gap:12px;background:var(--sd-surface);border:1px solid var(--sd-border);border-radius:18px;padding:16px;box-shadow:var(--sd-shadow)}.sd-stat .ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:20px;background:var(--sd-surface2);color:var(--sd-brand)}.sd-stat small{display:block;color:var(--sd-muted);font-size:9px;font-weight:800}.sd-stat strong{display:block;font-size:17px;margin-top:3px}.sd-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px}.sd-main{display:grid;gap:18px}.sd-side{display:grid;align-content:start;gap:18px}.sd-card{background:var(--sd-surface);border:1px solid var(--sd-border);border-radius:22px;padding:20px;box-shadow:var(--sd-shadow)}.sd-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.sd-title-wrap{display:flex;align-items:center;gap:11px}.sd-title-ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--sd-surface2);color:var(--sd-brand);font-size:17px}.sd-head h2{margin:0;font-size:17px}.sd-head p{margin:4px 0 0;color:var(--sd-muted);font-size:10px;line-height:1.7}.sd-tag{padding:6px 9px;border-radius:999px;background:var(--sd-surface2);border:1px solid var(--sd-border);font-size:9px;font-weight:800;color:var(--sd-muted)}.sd-form{display:grid;grid-template-columns:1fr 1.2fr;gap:12px}.sd-field label{display:block;font-size:10px;font-weight:800;margin-bottom:6px}.sd-field input,.sd-field select{width:100%;min-height:46px;border:1px solid var(--sd-border);border-radius:12px;background:var(--sd-surface2);color:var(--sd-text);padding:0 12px;box-sizing:border-box;font:600 11px "Cairo",Tahoma,Arial,sans-serif;outline:none}.sd-field input:focus,.sd-field select:focus{border-color:#8ca9ff;box-shadow:0 0 0 4px rgba(49,94,234,.08)}.sd-actions-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.sd-btn.dark{background:var(--sd-brand);color:#fff}.sd-btn.soft{background:var(--sd-surface2);border-color:var(--sd-border);color:var(--sd-text)}.sd-btn.danger{background:#fff0f2;color:#c43b4d;border-color:#ffd1d8}.sd-page.sd-dark .sd-btn.danger{background:#331921;color:#ffb6bf;border-color:#5b2b35}.sd-save{min-height:24px;margin:8px 0 0;color:var(--sd-good);font-size:10px;font-weight:800}.sd-profile{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.sd-mini{padding:12px 13px;border-radius:14px;background:var(--sd-surface2);border:1px solid var(--sd-border)}.sd-mini small{display:block;color:var(--sd-muted);font-size:8px}.sd-mini strong{display:block;font-size:11px;margin-top:3px}.sd-progress{height:12px;background:var(--sd-surface2);border:1px solid var(--sd-border);border-radius:99px;overflow:hidden}.sd-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sd-brand),var(--sd-brand2));border-radius:99px;transition:width .35s ease}.sd-progress-meta{display:flex;justify-content:space-between;align-items:center;color:var(--sd-muted);font-size:9px;margin-top:7px}.sd-progress-meta strong{color:var(--sd-text);font-size:11px}.sd-tip{margin-top:14px;border-radius:14px;background:linear-gradient(135deg,rgba(49,94,234,.08),rgba(0,168,232,.06));border:1px solid rgba(49,94,234,.14);padding:12px;font-size:10px;line-height:1.8}.sd-points{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:#fff5d9;border:1px solid #f2dea1;color:#8a6811;font-weight:900}.sd-page.sd-dark .sd-points{background:#312815;color:#f5d26c;border-color:#665421}.sd-favs{display:grid;gap:9px}.sd-fav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border-radius:14px;background:var(--sd-surface2);border:1px solid var(--sd-border)}.sd-fav strong{font-size:11px}.sd-fav small{display:block;color:var(--sd-muted);font-size:8px;margin-top:2px}.sd-remove{border:0;background:transparent;color:var(--sd-danger);font:800 9px "Cairo",Tahoma,Arial,sans-serif;cursor:pointer}.sd-empty{padding:18px;text-align:center;color:var(--sd-muted);border:1px dashed var(--sd-border);border-radius:14px;font-size:10px}.sd-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.sd-quick a{display:flex;align-items:center;gap:10px;padding:14px;border-radius:16px;background:var(--sd-surface2);border:1px solid var(--sd-border);text-decoration:none;color:var(--sd-text);transition:.18s ease}.sd-quick a:hover{transform:translateY(-2px);border-color:#9db3ff}.sd-quick .qi{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--sd-surface);font-size:18px}.sd-quick strong{display:block;font-size:10px}.sd-quick small{display:block;color:var(--sd-muted);font-size:8px;margin-top:3px}.sd-checks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.sd-check{padding:14px;border-radius:14px;background:var(--sd-surface2);border:1px solid var(--sd-border)}.sd-check b{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--sd-brand);color:#fff;font-size:10px;margin-bottom:9px}.sd-check span{font-size:10px;font-weight:700;line-height:1.7}.sd-side-card{background:linear-gradient(180deg,var(--sd-surface),var(--sd-surface2));border:1px solid var(--sd-border);border-radius:22px;padding:18px;box-shadow:var(--sd-shadow)}.sd-side-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}.sd-side-title .ico{width:42px;height:42px;border-radius:13px;background:var(--sd-brand);color:#fff;display:grid;place-items:center;font-size:18px}.sd-side-title h3{margin:0;font-size:15px}.sd-side-title p{margin:3px 0 0;color:var(--sd-muted);font-size:9px}.sd-side-links{display:grid;gap:8px}.sd-side-links a{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;background:var(--sd-surface);border:1px solid var(--sd-border);text-decoration:none;color:var(--sd-text);font-size:10px;font-weight:800}.sd-side-links a:hover{border-color:#9db3ff}.sd-side-links i{width:28px;text-align:center;color:var(--sd-brand)}.sd-side-stats{display:grid;gap:8px;margin-top:14px}.sd-side-stat{display:flex;align-items:center;justify-content:space-between;padding:10px 11px;border-radius:12px;background:var(--sd-surface);border:1px solid var(--sd-border)}.sd-side-stat span{font-size:9px;color:var(--sd-muted)}.sd-side-stat strong{font-size:10px}.sd-home{display:flex;align-items:center;justify-content:center;min-height:45px;border-radius:13px;background:var(--sd-brand);color:#fff;text-decoration:none;font-size:10px;font-weight:900;margin-top:14px}.sd-bottom{display:none}
+@media(max-width:980px){.sd-grid{grid-template-columns:1fr}.sd-side{grid-template-columns:1fr 1fr}.sd-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.sd-shell{padding:14px 12px 96px}.sd-top{margin-top:54px}.sd-hero{padding:20px;border-radius:20px;flex-direction:column;align-items:stretch}.sd-hero h1{font-size:25px}.sd-actions{display:grid;grid-template-columns:1fr 1fr}.sd-btn{width:100%;min-height:48px}.sd-stats{grid-template-columns:1fr 1fr;gap:10px}.sd-stat{padding:12px}.sd-stat .ico{width:40px;height:40px;font-size:17px}.sd-stat strong{font-size:14px}.sd-form,.sd-profile{grid-template-columns:1fr}.sd-side{grid-template-columns:1fr}.sd-quick{grid-template-columns:1fr 1fr}.sd-checks{grid-template-columns:1fr 1fr}.sd-bottom{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);bottom:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-top:1px solid var(--sd-border);padding:7px 7px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -12px 35px rgba(19,34,61,.10)}body.sd-dark .sd-bottom{background:rgba(13,20,34,.95)}.sd-bottom a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:50px;border-radius:12px;color:var(--sd-muted);text-decoration:none;font-size:8px;font-weight:800}.sd-bottom a i{font-size:16px}.sd-bottom a.active,.sd-bottom a:active{color:var(--sd-brand);background:var(--sd-surface2)}}
+@media(max-width:420px){.sd-stats{grid-template-columns:1fr}.sd-quick{grid-template-columns:1fr}.sd-checks{grid-template-columns:1fr}.sd-actions{grid-template-columns:1fr}.sd-card{padding:15px}.sd-hero h1{font-size:22px}}
+</style>
 </head>
-<body class="student-body">
-<script src="navigation.js"></script>
-<main class="student-page">
-  <section class="student-hero">
-    <div><h1>📊 لوحة الطالب</h1><p>مكان واحد لمتابعة الصف والتخصص والتقدم والمفضلة وأدوات BTEC JO.</p></div>
-    <span class="student-pill">BTEC JO • Student</span>
+<body class="sd-page">
+
+<div class="sd-shell">
+  <div class="sd-top">
+    <a class="sd-back" href="index.html"><i class="fa-solid fa-arrow-right"></i> الرئيسية</a>
+    <div class="sd-top-actions">
+      <button class="sd-icon-btn" id="themeToggle" type="button" aria-label="تغيير الوضع"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </div>
+
+  <section class="sd-hero">
+    <div>
+      <div class="sd-kicker">BTEC JO • STUDENT CENTER</div>
+      <h1>لوحة الطالب</h1>
+      <p>مكانك الشخصي لمتابعة صفك وتخصصك وتقدمك ومفضلاتك وأهم أدوات BTEC JO — بتصميم مرتب على الكمبيوتر والموبايل.</p>
+    </div>
+    <div class="sd-actions">
+      <a class="sd-btn primary" href="ai.html"><i class="fa-solid fa-robot"></i> BTEC AI</a>
+      <a class="sd-btn ghost" href="sources.html"><i class="fa-solid fa-link"></i> المصادر</a>
+    </div>
   </section>
 
-  <div class="student-grid">
-    <div class="student-main">
-      <section class="student-card">
-        <h2>👤 ملفك الدراسي</h2><p class="student-sub">احفظ صفك وتخصصك على هذا الجهاز حتى تبقى معلوماتك جاهزة.</p>
-        <div class="profile-form">
-          <div class="field"><label for="grade">الصف</label><select id="grade"><option value="">اختر الصف</option><option>الصف العاشر</option><option>الأول الثانوي</option><option>الثاني الثانوي / التوجيهي</option></select></div>
-          <div class="field"><label for="specialty">التخصص</label><input id="specialty" placeholder="مثال: إدارة الأعمال" autocomplete="off"></div>
+  <section class="sd-stats">
+    <article class="sd-stat"><div class="ico"><i class="fa-solid fa-user-graduate"></i></div><div><small>الصف</small><strong id="summaryGrade">غير محدد</strong></div></article>
+    <article class="sd-stat"><div class="ico"><i class="fa-solid fa-graduation-cap"></i></div><div><small>التخصص</small><strong id="summarySpecialty">غير محدد</strong></div></article>
+    <article class="sd-stat"><div class="ico"><i class="fa-solid fa-chart-line"></i></div><div><small>التقدم</small><strong id="progressText">0%</strong></div></article>
+    <article class="sd-stat"><div class="ico"><i class="fa-solid fa-star"></i></div><div><small>المفضلة</small><strong id="favoriteCount">0</strong></div></article>
+  </section>
+
+  <div class="sd-grid">
+    <div class="sd-main">
+      <section class="sd-card">
+        <div class="sd-head"><div class="sd-title-wrap"><div class="sd-title-ico"><i class="fa-solid fa-id-card"></i></div><div><h2>ملفك الدراسي</h2><p>احفظ صفك وتخصصك على هذا الجهاز.</p></div></div><span class="sd-tag">محلي على جهازك</span></div>
+        <div class="sd-form">
+          <div class="sd-field"><label for="grade">الصف</label><select id="grade"><option value="">اختر الصف</option><option>الصف العاشر</option><option>الأول الثانوي</option><option>الثاني الثانوي / التوجيهي</option></select></div>
+          <div class="sd-field"><label for="specialty">التخصص</label><input id="specialty" placeholder="مثال: إدارة الأعمال" autocomplete="off"></div>
         </div>
-        <div class="student-actions"><button class="student-btn" id="saveProfile">💾 حفظ الملف</button><button class="student-btn secondary" id="clearProfile">مسح البيانات</button></div>
-        <p id="saved" class="student-sub" style="margin-top:10px;margin-bottom:0;color:#16824f;font-weight:800"></p>
-        <div class="profile-summary"><div class="summary-box"><strong>الصف الحالي</strong><span id="summaryGrade">غير محدد</span></div><div class="summary-box"><strong>التخصص</strong><span id="summarySpecialty">غير محدد</span></div></div>
+        <div class="sd-actions-row"><button class="sd-btn dark" id="saveProfile" type="button"><i class="fa-solid fa-floppy-disk"></i> حفظ الملف</button><button class="sd-btn soft" id="clearProfile" type="button">مسح البيانات</button></div>
+        <div id="saved" class="sd-save" aria-live="polite"></div>
+        <div class="sd-profile"><div class="sd-mini"><small>الصف الحالي</small><strong id="sideGrade">غير محدد</strong></div><div class="sd-mini"><small>التخصص الحالي</small><strong id="sideSpecialty">غير محدد</strong></div></div>
       </section>
 
-      <section class="student-card">
-        <div class="stat-line"><div><h2>📈 تقدمك</h2><p class="student-sub">سجّل الإنجازات التي أنجزتها أثناء دراستك.</p></div><div><div class="stat-number" id="points">0</div><div class="stat-label">نقطة</div></div></div>
-        <div class="progress-track"><i id="bar"></i></div><div class="progress-meta"><span>0%</span><strong id="progressText">0%</strong><span>100%</span></div>
-        <div class="tip">💡 <strong>نصيحة اليوم:</strong> ركّز على تحقيق المطلوب في المعيار وربط العمل بالدليل، وليس على زيادة عدد الصفحات فقط.</div>
-        <div class="student-actions"><button class="student-btn" id="addProgress">+ سجل إنجاز</button><button class="student-btn secondary" id="resetProgress">تصفير التقدم</button></div>
+      <section class="sd-card">
+        <div class="sd-head"><div class="sd-title-wrap"><div class="sd-title-ico"><i class="fa-solid fa-chart-simple"></i></div><div><h2>تقدمك الدراسي</h2><p>كل إنجاز صغير يقربك من هدفك.</p></div></div><div class="sd-points"><span id="points">0</span> نقطة</div></div>
+        <div class="sd-progress"><i id="bar"></i></div>
+        <div class="sd-progress-meta"><span>البداية</span><strong id="progressTextMirror">0%</strong><span>100%</span></div>
+        <div class="sd-tip"><i class="fa-solid fa-lightbulb"></i> ركّز على فعل المعيار واربط كل نتيجة بدليل واضح.</div>
+        <div class="sd-actions-row"><button class="sd-btn dark" id="addProgress" type="button"><i class="fa-solid fa-plus"></i> سجل إنجاز</button><button class="sd-btn soft" id="resetProgress" type="button">تصفير التقدم</button></div>
       </section>
 
-      <section class="student-card">
-        <h2>⭐ المفضلة</h2><p class="student-sub">التخصصات التي تحفظها من الموسوعة تظهر هنا.</p>
-        <div class="favorites-list" id="favorites"><div class="empty">لا توجد تخصصات محفوظة بعد.</div></div>
-        <div class="student-actions"><button class="student-btn danger" id="clearFav">مسح المفضلة</button><a class="student-btn secondary" href="specialties-encyclopedia.html">📚 فتح الموسوعة</a></div>
+      <section class="sd-card">
+        <div class="sd-head"><div class="sd-title-wrap"><div class="sd-title-ico"><i class="fa-solid fa-star"></i></div><div><h2>المفضلة</h2><p>التخصصات التي حفظتها من الموسوعة.</p></div></div><a class="sd-back" href="specialties-encyclopedia.html">الموسوعة <i class="fa-solid fa-arrow-up-left-from-circle"></i></a></div>
+        <div class="sd-favs" id="favorites"></div>
+        <div class="sd-actions-row"><button class="sd-btn danger" id="clearFav" type="button"><i class="fa-solid fa-trash"></i> مسح المفضلة</button></div>
       </section>
 
-      <section class="student-card">
-        <h2>🚀 اختصارات الدراسة</h2><p class="student-sub">أدوات BTEC JO الأساسية في مكان واحد.</p>
-        <div class="quick-grid">
-          <a class="quick-link" href="ai.html"><span>🤖</span>اسأل BTEC AI<small>شرح وإجابات</small></a>
-          <a class="quick-link" href="specialties-encyclopedia.html"><span>📚</span>التخصصات والوحدات<small>الموسوعة</small></a>
-          <a class="quick-link" href="quick-quiz.html"><span>🧠</span>اختبار سريع<small>راجع نفسك</small></a>
-          <a class="quick-link" href="daily-motivation.html"><span>🚀</span>تحدي اليوم<small>مهمة يومية</small></a>
-          <a class="quick-link" href="top-students.html"><span>🏆</span>أوائل التخصصات<small>النتائج المنشورة رسميًا</small></a>
-          <a class="quick-link" href="sources.html"><span>🔗</span>المصادر الرسمية<small>تحقق من المعلومات</small></a>
+      <section class="sd-card">
+        <div class="sd-head"><div class="sd-title-wrap"><div class="sd-title-ico"><i class="fa-solid fa-bolt"></i></div><div><h2>اختصارات الدراسة</h2><p>أهم أدوات BTEC JO في مكان واحد.</p></div></div></div>
+        <div class="sd-quick">
+          <a href="ai.html"><span class="qi">🤖</span><span><strong>BTEC AI</strong><small>اسأل واستفسر</small></span></a>
+          <a href="specialties-encyclopedia.html"><span class="qi">📚</span><span><strong>التخصصات والوحدات</strong><small>الموسوعة</small></span></a>
+          <a href="quick-quiz.html"><span class="qi">🧠</span><span><strong>اختبار سريع</strong><small>راجع نفسك</small></span></a>
+          <a href="daily-motivation.html"><span class="qi">🔥</span><span><strong>تحدي اليوم</strong><small>مهمة يومية</small></span></a>
+          <a href="top-students.html"><span class="qi">🏆</span><span><strong>أوائل التخصصات</strong><small>تحفيز ونتائج</small></span></a>
+          <a href="sources.html"><span class="qi">🔗</span><span><strong>المصادر الرسمية</strong><small>تحقق من المعلومة</small></span></a>
         </div>
       </section>
 
-      <section class="student-card full">
-        <h2>✅ قبل تسليم أي واجب</h2><p class="student-sub">مراجعة سريعة قبل التسليم.</p>
-        <div class="profile-summary"><div class="summary-box"><strong>1</strong><span>اقرأ نص المعيار كاملًا</span></div><div class="summary-box"><strong>2</strong><span>حدد المطلوب والدليل</span></div><div class="summary-box"><strong>3</strong><span>اربط الدليل بالمعيار</span></div><div class="summary-box"><strong>4</strong><span>راجع تعليمات المعلم</span></div></div>
+      <section class="sd-card">
+        <div class="sd-head"><div class="sd-title-wrap"><div class="sd-title-ico"><i class="fa-solid fa-clipboard-check"></i></div><div><h2>قبل تسليم أي واجب</h2><p>مراجعة سريعة قبل الضغط على زر التسليم.</p></div></div></div>
+        <div class="sd-checks"><div class="sd-check"><b>1</b><span>قرأت نص المعيار كاملًا</span></div><div class="sd-check"><b>2</b><span>حددت المطلوب والدليل</span></div><div class="sd-check"><b>3</b><span>ربطت الدليل بالمعيار</span></div><div class="sd-check"><b>4</b><span>راجعت تعليمات المعلم</span></div></div>
       </section>
     </div>
 
-    <aside class="student-side">
-      <h2>🎯 ملخصك السريع</h2><p>البيانات التالية محفوظة محليًا على جهازك.</p>
-      <div class="side-actions"><a class="student-btn" href="ai.html">🤖 افتح BTEC AI</a><a class="student-btn secondary" href="quick-quiz.html">🧠 ابدأ اختبارًا</a><a class="student-btn secondary" href="daily-motivation.html">🚀 تحدي اليوم</a><a class="student-btn secondary" href="top-students.html">🏆 أوائل التخصصات</a><a class="student-btn secondary" href="sources.html">🔗 المصادر</a></div>
-      <div class="side-divider"></div>
-      <div class="side-stat"><span>الصف</span><strong id="sideGrade">غير محدد</strong></div>
-      <div class="side-stat"><span>التخصص</span><strong id="sideSpecialty">غير محدد</strong></div>
-      <div class="side-stat"><span>النقاط</span><strong id="sidePoints">0</strong></div>
-      <div class="side-stat"><span>نسبة التقدم</span><strong id="sideProgress">0%</strong></div>
-      <div class="side-divider"></div>
-      <a class="student-btn secondary" href="index.html">🏠 العودة للرئيسية</a>
+    <aside class="sd-side">
+      <section class="sd-side-card">
+        <div class="sd-side-title"><div class="ico"><i class="fa-solid fa-compass"></i></div><div><h3>ملخصك السريع</h3><p>اختصارات ومعلوماتك الحالية.</p></div></div>
+        <div class="sd-side-links">
+          <a href="ai.html"><i class="fa-solid fa-robot"></i> BTEC AI</a>
+          <a href="quick-quiz.html"><i class="fa-solid fa-brain"></i> الاختبار السريع</a>
+          <a href="daily-motivation.html"><i class="fa-solid fa-fire"></i> تحدي اليوم</a>
+          <a href="top-students.html"><i class="fa-solid fa-trophy"></i> أوائل التخصصات</a>
+          <a href="sources.html"><i class="fa-solid fa-link"></i> المصادر الرسمية</a>
+        </div>
+        <div class="sd-side-stats"><div class="sd-side-stat"><span>الصف</span><strong id="sideGradeMirror">غير محدد</strong></div><div class="sd-side-stat"><span>التخصص</span><strong id="sideSpecialtyMirror">غير محدد</strong></div><div class="sd-side-stat"><span>النقاط</span><strong id="sidePoints">0</strong></div><div class="sd-side-stat"><span>التقدم</span><strong id="sideProgress">0%</strong></div></div>
+        <a class="sd-home" href="index.html"><i class="fa-solid fa-house"></i>&nbsp; العودة للرئيسية</a>
+      </section>
     </aside>
   </div>
-</main>
+</div>
+
+<nav class="sd-bottom" aria-label="تنقل الهاتف">
+  <a class="active" href="index.html"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a>
+  <a href="specialties-encyclopedia.html"><i class="fa-solid fa-graduation-cap"></i><span>التخصصات</span></a>
+  <a href="ai.html"><i class="fa-solid fa-robot"></i><span>AI</span></a>
+  <a href="sources.html"><i class="fa-solid fa-link"></i><span>المصادر</span></a>
+</nav>
 
 <script>
-const readJSON=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(d))}catch{return d}};
-let profile=readJSON('btecjo-profile',{grade:'',specialty:''});
-let points=Math.min(100,Math.max(0,Number(localStorage.getItem('btecjo-progress')||0)));
-let favorites=readJSON('btecjo-favorites',[]);
-const $=id=>document.getElementById(id);
-const grade=$('grade'), specialty=$('specialty');
-function render(){
-  grade.value=profile.grade||''; specialty.value=profile.specialty||'';
-  $('summaryGrade').textContent=profile.grade||'غير محدد'; $('summarySpecialty').textContent=profile.specialty||'غير محدد';
-  $('sideGrade').textContent=profile.grade||'غير محدد'; $('sideSpecialty').textContent=profile.specialty||'غير محدد';
-  $('points').textContent=points; $('sidePoints').textContent=points;
-  $('bar').style.width=points+'%'; $('progressText').textContent=points+'%'; $('sideProgress').textContent=points+'%';
-  const list=Array.isArray(favorites)?favorites:[];
-  $('favorites').innerHTML=list.length?list.map((item,i)=>{const name=typeof item==='string'?item:(item&&item.name)||'تخصص محفوظ';return `<div class="fav-item"><div><strong>⭐ ${name}</strong><small>محفوظ في جهازك</small></div><button class="fav-remove" data-i="${i}">إزالة</button></div>`}).join(''):'<div class="empty">لا توجد تخصصات محفوظة بعد.</div>';
-  $('favorites').querySelectorAll('.fav-remove').forEach(btn=>btn.addEventListener('click',()=>{favorites.splice(Number(btn.dataset.i),1);localStorage.setItem('btecjo-favorites',JSON.stringify(favorites));render()}));
-}
-$('saveProfile').addEventListener('click',()=>{profile={grade:grade.value,specialty:specialty.value.trim()};localStorage.setItem('btecjo-profile',JSON.stringify(profile));$('saved').textContent='تم حفظ الملف على هذا الجهاز ✅';render();});
-$('clearProfile').addEventListener('click',()=>{profile={grade:'',specialty:''};localStorage.setItem('btecjo-profile',JSON.stringify(profile));$('saved').textContent='تم مسح البيانات.';render();});
-$('addProgress').addEventListener('click',()=>{points=Math.min(100,points+5);localStorage.setItem('btecjo-progress',String(points));render();});
-$('resetProgress').addEventListener('click',()=>{points=0;localStorage.setItem('btecjo-progress','0');render();});
-$('clearFav').addEventListener('click',()=>{favorites=[];localStorage.setItem('btecjo-favorites','[]');render();});
-render();
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const readJSON = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); } catch { return fallback; } };
+  let profile = readJSON('btecjo-profile', {grade:'', specialty:''});
+  let progress = Math.max(0, Math.min(100, Number(localStorage.getItem('btecjo-progress') || 0)));
+  let points = Math.max(0, Number(localStorage.getItem('btecjo-points') || 0));
+  let favorites = readJSON('btecjo-favorites', []);
+  const grade = $('grade'), specialty = $('specialty');
+  const favName = (x) => typeof x === 'string' ? x : (x?.name || 'تخصص محفوظ');
+  function theme(){ const dark = localStorage.getItem('btecjo-theme') === 'dark'; document.body.classList.toggle('sd-dark', dark); const i=$('themeToggle')?.querySelector('i'); if(i) i.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; }
+  $('themeToggle')?.addEventListener('click', () => { localStorage.setItem('btecjo-theme', localStorage.getItem('btecjo-theme') === 'dark' ? 'light' : 'dark'); theme(); });
+  function renderFavs(){ const box=$('favorites'); $('favoriteCount').textContent=favorites.length; box.innerHTML=favorites.length ? favorites.map((x,i)=>`<div class="sd-fav"><div><strong>⭐ ${favName(x)}</strong><small>محفوظ على هذا الجهاز</small></div><button class="sd-remove" data-i="${i}" type="button">إزالة</button></div>`).join('') : '<div class="sd-empty">لا توجد تخصصات محفوظة بعد. افتح الموسوعة واحفظ تخصصاتك المفضلة.</div>'; box.querySelectorAll('.sd-remove').forEach(b=>b.addEventListener('click',()=>{favorites.splice(Number(b.dataset.i),1);localStorage.setItem('btecjo-favorites',JSON.stringify(favorites));renderFavs();})); }
+  function render(){ grade.value=profile.grade||''; specialty.value=profile.specialty||''; const g=profile.grade||'غير محدد', s=profile.specialty||'غير محدد'; ['summaryGrade','sideGrade','sideGradeMirror'].forEach(id=>$(id).textContent=g); ['summarySpecialty','sideSpecialty','sideSpecialtyMirror'].forEach(id=>$(id).textContent=s); $('bar').style.width=progress+'%'; $('progressText').textContent=progress+'%'; $('progressTextMirror').textContent=progress+'%'; $('sideProgress').textContent=progress+'%'; $('points').textContent=points; $('sidePoints').textContent=points; renderFavs(); }
+  $('saveProfile').addEventListener('click',()=>{profile={grade:grade.value,specialty:specialty.value.trim()};localStorage.setItem('btecjo-profile',JSON.stringify(profile));$('saved').textContent='تم حفظ ملفك بنجاح ✅';render();});
+  $('clearProfile').addEventListener('click',()=>{profile={grade:'',specialty:''};localStorage.setItem('btecjo-profile',JSON.stringify(profile));$('saved').textContent='تم مسح البيانات.';render();});
+  $('addProgress').addEventListener('click',()=>{progress=Math.min(100,progress+10);points+=10;localStorage.setItem('btecjo-progress',progress);localStorage.setItem('btecjo-points',points);render();});
+  $('resetProgress').addEventListener('click',()=>{progress=0;points=0;localStorage.setItem('btecjo-progress','0');localStorage.setItem('btecjo-points','0');render();});
+  $('clearFav').addEventListener('click',()=>{favorites=[];localStorage.setItem('btecjo-favorites','[]');renderFavs();});
+  theme(); render();
+})();
 </script>
 </body>
 </html>

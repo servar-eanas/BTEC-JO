@@ -4,122 +4,103 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>BTEC JO | لوحة الطالب</title>
-<meta name="description" content="لوحة طالب BTEC JO لمتابعة الصف والتخصص والتقدم والمفضلة والتحديات اليومية.">
+<meta name="description" content="لوحة الطالب في BTEC JO لمتابعة الصف والتخصص والتقدم والمفضلة وأدوات الدراسة.">
 <link rel="canonical" href="https://btec-jo.onrender.com/student-dashboard.html">
 <link rel="icon" type="image/svg+xml" href="/assets/btec-jo-logo.svg">
 <link rel="apple-touch-icon" href="/assets/btec-jo-logo.svg">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="navigation.css">
 <link rel="stylesheet" href="style.css">
-<style>
-:root{--dash-bg:#f5f8fc;--dash-card:#fff;--dash-text:#142038;--dash-muted:#6c7890;--dash-line:#e2e8f1;--dash-blue:#315eea;--dash-cyan:#08a8e8;--dash-soft:#eef3ff;--dash-danger:#fff0f0;--dash-green:#16824f}
-body{background:var(--dash-bg)!important;color:var(--dash-text)}
-.dashboard-shell{max-width:1180px;margin:0 auto;padding:34px 22px 90px;transition:.25s}
-.dashboard-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px;padding:22px 24px;background:linear-gradient(135deg,#101d3c,#315eea);color:#fff;border-radius:24px;box-shadow:0 18px 50px rgba(33,58,112,.18)}
-.dashboard-head h1{margin:0 0 5px;font-size:30px;font-weight:900}.dashboard-head p{margin:0;color:#dbe6ff;font-size:12px}.dashboard-badge{padding:10px 13px;border-radius:13px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-weight:900;font-size:11px;white-space:nowrap}
-.dashboard-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;align-items:start}.main-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.dash-card{background:var(--dash-card);border:1px solid var(--dash-line);border-radius:22px;padding:22px;box-shadow:0 12px 35px rgba(20,35,70,.07);min-width:0}.dash-card.full{grid-column:1/-1}.dash-card h2{margin:0 0 6px;font-size:20px;color:var(--dash-text)}.dash-card .card-sub{margin:0 0 14px;color:var(--dash-muted);font-size:12px}
-.profile-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-field{min-width:0}.dash-card label{display:block;font-size:11px;font-weight:900;margin-bottom:6px;color:var(--dash-muted)}.dash-card input,.dash-card select{width:100%;min-height:46px;padding:11px 13px;border-radius:13px;border:1px solid var(--dash-line);background:#fbfcff;color:var(--dash-text);margin:0;font:inherit;outline:0}.dash-card input:focus,.dash-card select:focus{border-color:#9cb3ff;box-shadow:0 0 0 4px rgba(49,94,234,.09)}.dash-card select option{color:#142038}
-.dash-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.dash-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;border:0;border-radius:13px;padding:10px 15px;cursor:pointer;background:var(--dash-blue);color:#fff;font-weight:900;text-decoration:none;font:inherit;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}.dash-btn:hover{transform:translateY(-1px);box-shadow:0 9px 24px rgba(49,94,234,.18)}.dash-btn:active{transform:scale(.98)}.dash-btn.secondary{background:var(--dash-soft);color:var(--dash-blue)}.dash-btn.danger{background:var(--dash-danger);color:#b42318}.dash-btn.success{background:#eaf8f0;color:var(--dash-green)}
-.profile-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.summary-box{padding:13px;border-radius:14px;background:#f6f8fc;border:1px solid #e6ebf2}.summary-box strong{display:block;font-size:10px;color:var(--dash-muted);margin-bottom:4px}.summary-box span{font-weight:900;color:var(--dash-text)}.saved-note{margin:12px 0 0;color:#16824f;font-size:11px;font-weight:800}
-.stat-row{display:flex;align-items:end;justify-content:space-between;gap:12px}.stat{font-size:34px;font-weight:900;color:var(--dash-blue);line-height:1}.stat-label{font-size:11px;color:var(--dash-muted)}.progressbar{height:13px;background:#e9edf5;border-radius:99px;overflow:hidden;margin-top:18px}.progressbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--dash-cyan),var(--dash-blue));transition:width .3s}.progress-meta{display:flex;justify-content:space-between;color:var(--dash-muted);font-size:10px;margin-top:7px}.progress-chip{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:9px 11px;background:var(--dash-soft);color:var(--dash-blue);border-radius:12px;font-weight:900;font-size:11px}
-.fav-list{display:grid;gap:9px;max-height:280px;overflow:auto;padding-right:2px}.fav-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;border-radius:13px;background:#f7f9fd;border:1px solid #e6ebf2}.fav-row strong{font-size:12px}.fav-row small{display:block;color:var(--dash-muted);font-size:9px;margin-top:2px}.fav-remove{border:0;background:#fff;color:#b42318;border-radius:10px;padding:7px 9px;cursor:pointer;font-weight:900}.muted{opacity:.78;font-size:.9rem;color:var(--dash-muted)}
-.quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.quick-link{min-height:78px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;padding:13px;border-radius:15px;background:#f7f9fd;border:1px solid #e5eaf1;color:var(--dash-text);text-decoration:none;font-weight:900;transition:.18s}.quick-link:hover{transform:translateY(-2px);background:var(--dash-soft);color:var(--dash-blue)}.quick-link span{font-size:20px}.quick-link small{font-size:10px;color:var(--dash-muted);font-weight:700}
-.daily-tip{margin-top:14px;padding:14px 15px;border-radius:15px;background:linear-gradient(135deg,#eef3ff,#f7fbff);border:1px solid #dbe5ff;color:#1d3a85;font-size:11px;line-height:1.8}
-.side-card{position:sticky;top:22px;background:var(--dash-card);border:1px solid var(--dash-line);border-radius:22px;padding:18px;box-shadow:0 12px 35px rgba(20,35,70,.07)}.side-card h2{margin:0 0 5px;font-size:18px}.side-card p{margin:0;color:var(--dash-muted);font-size:11px}.side-actions{display:grid;gap:9px;margin-top:14px}.side-actions .dash-btn{width:100%}.side-divider{height:1px;background:var(--dash-line);margin:16px 0}.side-stat{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--dash-line);font-size:11px}.side-stat:last-child{border-bottom:0}.side-stat span:first-child{color:var(--dash-muted)}.side-stat strong{color:var(--dash-text)}
-.dark .dashboard-shell,.dark-mode .dashboard-shell{--dash-bg:#0b1220}.dark body,.dark-mode body{background:#0b1220!important}.dark .dash-card,.dark-mode .dash-card,.dark .side-card,.dark-mode .side-card{background:#121b2d;border-color:#2a3851;box-shadow:0 18px 50px rgba(0,0,0,.2)}.dark .dash-card h2,.dark-mode .dash-card h2,.dark .summary-box span,.dark-mode .summary-box span,.dark .side-card h2,.dark-mode .side-card h2,.dark .side-stat strong,.dark-mode .side-stat strong{color:#edf2ff}.dark .dash-card input,.dark-mode .dash-card input,.dark .dash-card select,.dark-mode .dash-card select{background:#182338;color:#edf2ff;border-color:#334158}.dark .dash-card select option,.dark-mode .dash-card select option{background:#121b2d;color:#edf2ff}.dark .summary-box,.dark-mode .summary-box,.dark .quick-link,.dark-mode .quick-link,.dark .fav-row,.dark-mode .fav-row{background:#182338;border-color:#2a3851}.dark .quick-link,.dark-mode .quick-link{color:#edf2ff}.dark .daily-tip,.dark-mode .daily-tip{background:#172441;border-color:#294271;color:#dbe6ff}.dark .side-divider,.dark-mode .side-divider,.dark .side-stat,.dark-mode .side-stat{border-color:#2a3851}.dark .side-stat span:first-child,.dark-mode .side-stat span:first-child,.dark .fav-row small,.dark-mode .fav-row small{color:#aab5ca}
-@media(max-width:1050px){.dashboard-layout{grid-template-columns:1fr}.side-card{position:static}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){.dashboard-shell{padding:24px 14px 110px}.dashboard-head{align-items:flex-start;flex-direction:column;padding:20px}.dashboard-head h1{font-size:26px}.main-grid{grid-template-columns:1fr}.profile-form{grid-template-columns:1fr}.quick-grid{grid-template-columns:1fr 1fr}.dash-actions{display:grid;grid-template-columns:1fr 1fr}.dash-actions .dash-btn{width:100%}}
-@media(max-width:460px){.quick-grid{grid-template-columns:1fr}.dashboard-head p{font-size:11px}.dash-card{padding:18px;border-radius:18px}.dash-actions{grid-template-columns:1fr}.profile-summary{grid-template-columns:1fr}}
-</style>
+<link rel="stylesheet" href="student-dashboard.css">
 </head>
-<body>
+<body class="student-body">
 <script src="navigation.js"></script>
-<main class="dashboard-shell">
-  <section class="dashboard-head">
-    <div><h1>📊 لوحة الطالب</h1><p>رتّب دراستك بوضوح وتابع الصف والتخصص والتقدم والمفضلة من مكان واحد.</p></div>
-    <span class="dashboard-badge">BTEC JO • Student</span>
+<main class="student-page">
+  <section class="student-hero">
+    <div><h1>📊 لوحة الطالب</h1><p>مكان واحد لمتابعة الصف والتخصص والتقدم والمفضلة وأدوات BTEC JO.</p></div>
+    <span class="student-pill">BTEC JO • Student</span>
   </section>
 
-  <div class="dashboard-layout">
-    <div class="main-grid">
-      <section class="dash-card">
-        <h2>👤 ملفك الدراسي</h2><p class="card-sub">احفظ صفك وتخصصك حتى تظهر لك البيانات بشكل أسرع.</p>
+  <div class="student-grid">
+    <div class="student-main">
+      <section class="student-card">
+        <h2>👤 ملفك الدراسي</h2><p class="student-sub">احفظ صفك وتخصصك على هذا الجهاز حتى تبقى معلوماتك جاهزة.</p>
         <div class="profile-form">
-          <div class="form-field"><label for="grade">الصف</label><select id="grade"><option value="">اختر الصف</option><option>الصف العاشر</option><option>الأول الثانوي</option><option>الثاني الثانوي / التوجيهي</option></select></div>
-          <div class="form-field"><label for="specialty">التخصص</label><input id="specialty" placeholder="مثال: إدارة الأعمال" autocomplete="off"></div>
+          <div class="field"><label for="grade">الصف</label><select id="grade"><option value="">اختر الصف</option><option>الصف العاشر</option><option>الأول الثانوي</option><option>الثاني الثانوي / التوجيهي</option></select></div>
+          <div class="field"><label for="specialty">التخصص</label><input id="specialty" placeholder="مثال: إدارة الأعمال" autocomplete="off"></div>
         </div>
-        <div class="dash-actions"><button class="dash-btn" id="saveProfile">💾 حفظ الملف</button><button class="dash-btn secondary" id="clearProfile">مسح</button></div>
-        <p class="saved-note" id="saved"></p>
+        <div class="student-actions"><button class="student-btn" id="saveProfile">💾 حفظ الملف</button><button class="student-btn secondary" id="clearProfile">مسح البيانات</button></div>
+        <p id="saved" class="student-sub" style="margin-top:10px;margin-bottom:0;color:#16824f;font-weight:800"></p>
         <div class="profile-summary"><div class="summary-box"><strong>الصف الحالي</strong><span id="summaryGrade">غير محدد</span></div><div class="summary-box"><strong>التخصص</strong><span id="summarySpecialty">غير محدد</span></div></div>
       </section>
 
-      <section class="dash-card">
-        <div class="stat-row"><div><h2>📈 تقدمك</h2><p class="card-sub">كل إنجاز يضيف 5 نقاط، والحد الأعلى 100 نقطة.</p></div><div><div class="stat"><span id="points">0</span></div><div class="stat-label">نقطة</div></div></div>
-        <div class="progressbar"><i id="bar"></i></div><div class="progress-meta"><span>0%</span><strong id="progressText">0%</strong><span>100%</span></div>
-        <div class="progress-chip">🔥 استمر يومًا بعد يوم</div>
-        <div class="dash-actions"><button class="dash-btn" id="addProgress">+ سجل إنجاز</button><button class="dash-btn secondary" id="resetProgress">تصفير</button></div>
-        <div class="daily-tip">💡 <strong>نصيحة اليوم:</strong> لا تركز على طول الواجب؛ ركز على أن يكون كل جزء مرتبطًا بالمعيار والدليل المطلوب.</div>
+      <section class="student-card">
+        <div class="stat-line"><div><h2>📈 تقدمك</h2><p class="student-sub">سجّل الإنجازات التي أنجزتها أثناء دراستك.</p></div><div><div class="stat-number" id="points">0</div><div class="stat-label">نقطة</div></div></div>
+        <div class="progress-track"><i id="bar"></i></div><div class="progress-meta"><span>0%</span><strong id="progressText">0%</strong><span>100%</span></div>
+        <div class="tip">💡 <strong>نصيحة اليوم:</strong> ركّز على تحقيق المطلوب في المعيار وربط العمل بالدليل، وليس على زيادة عدد الصفحات فقط.</div>
+        <div class="student-actions"><button class="student-btn" id="addProgress">+ سجل إنجاز</button><button class="student-btn secondary" id="resetProgress">تصفير التقدم</button></div>
       </section>
 
-      <section class="dash-card">
-        <h2>⭐ المفضلة</h2><p class="card-sub">التخصصات التي حفظتها من موسوعة التخصصات تظهر هنا.</p>
-        <div class="fav-list" id="favorites"><p class="muted">لا توجد عناصر محفوظة بعد.</p></div>
-        <div class="dash-actions"><button class="dash-btn danger" id="clearFav">مسح المفضلة</button><a class="dash-btn secondary" href="specialties-encyclopedia.html">📚 فتح الموسوعة</a></div>
+      <section class="student-card">
+        <h2>⭐ المفضلة</h2><p class="student-sub">التخصصات التي تحفظها من الموسوعة تظهر هنا.</p>
+        <div class="favorites-list" id="favorites"><div class="empty">لا توجد تخصصات محفوظة بعد.</div></div>
+        <div class="student-actions"><button class="student-btn danger" id="clearFav">مسح المفضلة</button><a class="student-btn secondary" href="specialties-encyclopedia.html">📚 فتح الموسوعة</a></div>
       </section>
 
-      <section class="dash-card">
-        <h2>🚀 اختصارات</h2><p class="card-sub">كل الأدوات التي تحتاجها في مكان واحد.</p>
+      <section class="student-card">
+        <h2>🚀 اختصارات الدراسة</h2><p class="student-sub">أدوات BTEC JO الأساسية في مكان واحد.</p>
         <div class="quick-grid">
           <a class="quick-link" href="ai.html"><span>🤖</span>اسأل BTEC AI<small>شرح وإجابات</small></a>
-          <a class="quick-link" href="specialties-encyclopedia.html"><span>📚</span>التخصصات والوحدات<small>تصفح الموسوعة</small></a>
+          <a class="quick-link" href="specialties-encyclopedia.html"><span>📚</span>التخصصات والوحدات<small>الموسوعة</small></a>
           <a class="quick-link" href="quick-quiz.html"><span>🧠</span>اختبار سريع<small>راجع نفسك</small></a>
-          <a class="quick-link" href="daily-motivation.html"><span>🚀</span>تحدي اليوم<small>أنجز مهمة</small></a>
-          <a class="quick-link" href="top-students.html"><span>🏆</span>أوائل التخصصات<small>تحفيز ونتائج رسمية</small></a>
-          <a class="quick-link" href="sources.html"><span>🔗</span>المصادر الرسمية<small>تحقق من المعلومة</small></a>
+          <a class="quick-link" href="daily-motivation.html"><span>🚀</span>تحدي اليوم<small>مهمة يومية</small></a>
+          <a class="quick-link" href="top-students.html"><span>🏆</span>أوائل التخصصات<small>النتائج المنشورة رسميًا</small></a>
+          <a class="quick-link" href="sources.html"><span>🔗</span>المصادر الرسمية<small>تحقق من المعلومات</small></a>
         </div>
       </section>
 
-      <section class="dash-card full">
-        <h2>✅ قبل ما تسلّم أي واجب</h2><p class="card-sub">تذكير سريع بأهم الأشياء.</p>
+      <section class="student-card full">
+        <h2>✅ قبل تسليم أي واجب</h2><p class="student-sub">مراجعة سريعة قبل التسليم.</p>
         <div class="profile-summary"><div class="summary-box"><strong>1</strong><span>اقرأ نص المعيار كاملًا</span></div><div class="summary-box"><strong>2</strong><span>حدد المطلوب والدليل</span></div><div class="summary-box"><strong>3</strong><span>اربط الدليل بالمعيار</span></div><div class="summary-box"><strong>4</strong><span>راجع تعليمات المعلم</span></div></div>
       </section>
     </div>
 
-    <aside class="side-card">
-      <h2>🎯 ملخصك السريع</h2><p>هذه اللوحة محفوظة على جهازك.</p>
-      <div class="side-actions"><a class="dash-btn" href="ai.html">🤖 افتح BTEC AI</a><a class="dash-btn secondary" href="quick-quiz.html">🧠 ابدأ اختبارًا</a><a class="dash-btn secondary" href="daily-motivation.html">🚀 تحدي اليوم</a></div>
+    <aside class="student-side">
+      <h2>🎯 ملخصك السريع</h2><p>البيانات التالية محفوظة محليًا على جهازك.</p>
+      <div class="side-actions"><a class="student-btn" href="ai.html">🤖 افتح BTEC AI</a><a class="student-btn secondary" href="quick-quiz.html">🧠 ابدأ اختبارًا</a><a class="student-btn secondary" href="daily-motivation.html">🚀 تحدي اليوم</a><a class="student-btn secondary" href="top-students.html">🏆 أوائل التخصصات</a><a class="student-btn secondary" href="sources.html">🔗 المصادر</a></div>
       <div class="side-divider"></div>
       <div class="side-stat"><span>الصف</span><strong id="sideGrade">غير محدد</strong></div>
       <div class="side-stat"><span>التخصص</span><strong id="sideSpecialty">غير محدد</strong></div>
       <div class="side-stat"><span>النقاط</span><strong id="sidePoints">0</strong></div>
       <div class="side-stat"><span>نسبة التقدم</span><strong id="sideProgress">0%</strong></div>
       <div class="side-divider"></div>
-      <a class="dash-btn secondary" href="index.html">🏠 العودة للرئيسية</a>
+      <a class="student-btn secondary" href="index.html">🏠 العودة للرئيسية</a>
     </aside>
   </div>
 </main>
 
 <script>
-const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(d))}catch{return d}};
-let profile=get('btecjo-profile',{grade:'',specialty:''}), points=Number(localStorage.getItem('btecjo-progress')||0), fav=get('btecjo-favorites',[]);
-const gradeEl=document.getElementById('grade'), specialtyEl=document.getElementById('specialty'), savedEl=document.getElementById('saved'), pointsEl=document.getElementById('points'), bar=document.getElementById('bar'), progressText=document.getElementById('progressText'), favorites=document.getElementById('favorites');
-const summaryGrade=document.getElementById('summaryGrade'), summarySpecialty=document.getElementById('summarySpecialty'), sideGrade=document.getElementById('sideGrade'), sideSpecialty=document.getElementById('sideSpecialty'), sidePoints=document.getElementById('sidePoints'), sideProgress=document.getElementById('sideProgress');
-gradeEl.value=profile.grade||''; specialtyEl.value=profile.specialty||'';
-function favData(){return Array.isArray(fav)?fav:[]}
+const readJSON=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(d))}catch{return d}};
+let profile=readJSON('btecjo-profile',{grade:'',specialty:''});
+let points=Math.min(100,Math.max(0,Number(localStorage.getItem('btecjo-progress')||0)));
+let favorites=readJSON('btecjo-favorites',[]);
+const $=id=>document.getElementById(id);
+const grade=$('grade'), specialty=$('specialty');
 function render(){
-  const pct=Math.min(100,Math.max(0,points));
-  pointsEl.textContent=points; bar.style.width=pct+'%'; progressText.textContent=pct+'%';
-  summaryGrade.textContent=profile.grade||'غير محدد'; summarySpecialty.textContent=profile.specialty||'غير محدد';
-  sideGrade.textContent=profile.grade||'غير محدد'; sideSpecialty.textContent=profile.specialty||'غير محدد'; sidePoints.textContent=points; sideProgress.textContent=pct+'%';
-  const list=favData();
-  favorites.innerHTML=list.length?list.map((x,i)=>{const id=typeof x==='string'?x:(x&&x.id)||x;const name=typeof x==='string'?x:(x&&x.name)||'عنصر محفوظ';return `<div class="fav-row"><div><strong>⭐ ${name}</strong><small>تخصص محفوظ</small></div><button class="fav-remove" data-i="${i}">إزالة</button></div>`}).join(''):'<p class="muted">لا توجد عناصر محفوظة بعد.</p>';
-  favorites.querySelectorAll('.fav-remove').forEach(btn=>btn.addEventListener('click',()=>{fav.splice(Number(btn.dataset.i),1);localStorage.setItem('btecjo-favorites',JSON.stringify(fav));render()}));
+  grade.value=profile.grade||''; specialty.value=profile.specialty||'';
+  $('summaryGrade').textContent=profile.grade||'غير محدد'; $('summarySpecialty').textContent=profile.specialty||'غير محدد';
+  $('sideGrade').textContent=profile.grade||'غير محدد'; $('sideSpecialty').textContent=profile.specialty||'غير محدد';
+  $('points').textContent=points; $('sidePoints').textContent=points;
+  $('bar').style.width=points+'%'; $('progressText').textContent=points+'%'; $('sideProgress').textContent=points+'%';
+  const list=Array.isArray(favorites)?favorites:[];
+  $('favorites').innerHTML=list.length?list.map((item,i)=>{const name=typeof item==='string'?item:(item&&item.name)||'تخصص محفوظ';return `<div class="fav-item"><div><strong>⭐ ${name}</strong><small>محفوظ في جهازك</small></div><button class="fav-remove" data-i="${i}">إزالة</button></div>`}).join(''):'<div class="empty">لا توجد تخصصات محفوظة بعد.</div>';
+  $('favorites').querySelectorAll('.fav-remove').forEach(btn=>btn.addEventListener('click',()=>{favorites.splice(Number(btn.dataset.i),1);localStorage.setItem('btecjo-favorites',JSON.stringify(favorites));render()}));
 }
-document.getElementById('saveProfile').onclick=()=>{profile={grade:gradeEl.value,specialty:specialtyEl.value.trim()};localStorage.setItem('btecjo-profile',JSON.stringify(profile));savedEl.textContent='تم حفظ الملف على هذا الجهاز ✅';render()};
-document.getElementById('clearProfile').onclick=()=>{profile={grade:'',specialty:''};gradeEl.value='';specialtyEl.value='';localStorage.setItem('btecjo-profile',JSON.stringify(profile));savedEl.textContent='تم مسح الملف.';render()};
-document.getElementById('addProgress').onclick=()=>{points=Math.min(100,points+5);localStorage.setItem('btecjo-progress',String(points));render()};
-document.getElementById('resetProgress').onclick=()=>{points=0;localStorage.setItem('btecjo-progress','0');render()};
-document.getElementById('clearFav').onclick=()=>{fav=[];localStorage.setItem('btecjo-favorites','[]');render()};
+$('saveProfile').addEventListener('click',()=>{profile={grade:grade.value,specialty:specialty.value.trim()};localStorage.setItem('btecjo-profile',JSON.stringify(profile));$('saved').textContent='تم حفظ الملف على هذا الجهاز ✅';render();});
+$('clearProfile').addEventListener('click',()=>{profile={grade:'',specialty:''};localStorage.setItem('btecjo-profile',JSON.stringify(profile));$('saved').textContent='تم مسح البيانات.';render();});
+$('addProgress').addEventListener('click',()=>{points=Math.min(100,points+5);localStorage.setItem('btecjo-progress',String(points));render();});
+$('resetProgress').addEventListener('click',()=>{points=0;localStorage.setItem('btecjo-progress','0');render();});
+$('clearFav').addEventListener('click',()=>{favorites=[];localStorage.setItem('btecjo-favorites','[]');render();});
 render();
 </script>
 </body>

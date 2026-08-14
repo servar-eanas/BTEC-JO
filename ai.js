@@ -1,186 +1,438 @@
-document.addEventListener("DOMContentLoaded",()=>{
-window.BTEC_KNOWLEDGE=[{"keys":["ما هو نظام الواجب في BTEC؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["كيف أبدأ واجب BTEC؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["ما أول خطوة في حل الواجب؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["كيف أفهم Assignment؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["كيف أحدد المطلوب في الواجب؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["ما علاقة Learning Aim بالواجب؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["كيف أنظم واجب BTEC؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["كيف أراجع واجبي قبل التسليم؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["هل كل واجبات BTEC متشابهة؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["هل الواجب يعتمد على الأدلة؟"],"answer":"نظام الواجبات في BTEC يعتمد على مهام تقييم مرتبطة بوحدات دراسية ومعايير محددة. اقرأ السيناريو، حدد Learning Aim، اكتب كل معيار مطلوب، ثم جهز العمل والأدلة التي تثبت كل معيار. تعليمات المهمة ومواصفة الوحدة هي المرجع النهائي."},{"keys":["كيف أحقق P؟","كيف احقق P؟","كيف أحقق Pass؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["ما المطلوب لتحقيق Pass؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["كيف أتأكد أني حققت معيار P؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["هل عدد الصفحات يحقق P؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["كيف أكتب إجابة مناسبة لـP؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["هل الدليل مهم في P؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["ما الفرق بين تنفيذ المطلوب وذكره في P؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["كيف أراجع معيار P؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["متى أعرف أن P مكتمل؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["هل P يحتاج دليلًا واضحًا؟"],"answer":"لتحقيق P: اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفذ المطلوب، قدم دليلًا واضحًا، واربط الدليل بالمعيار. عدد الصفحات وحده لا يضمن تحقيق المعيار."},{"keys":["شو الفرق بين P و M و D؟"],"answer":"P = Pass، وM = Merit، وD = Distinction. لكل مستوى متطلبات مختلفة حسب صياغة معيار التقييم ومواصفة الوحدة؛ لذلك لا يجوز استخدام إجابة P لتحقيق M أو D."},{"keys":["ما معنى P في BTEC؟"],"answer":"P يعني Pass. لتحقيق معيار P، اقرأ نص المعيار حرفيًا، حدد كل جزء مطلوب، نفّذ المطلوب، وقدّم دليلًا واضحًا مرتبطًا بالمعيار. عدد الصفحات وحده لا يضمن تحقيق P."},{"keys":["ما معنى M في BTEC؟","كيف أحقق M؟","كيف احقق M؟","كيف أحقق Merit؟"],"answer":"M يعني Merit. لتحقيق M يجب اتباع نص معيار الـM نفسه ومواصفة الوحدة، وإظهار المستوى الأعمق المطلوب في صياغة المعيار مثل التحليل أو التبرير أو الربط بين النتائج عندما ينص المعيار على ذلك. لا يكفي نسخ إجابة P أو زيادة عدد الصفحات؛ المرجع النهائي هو نص معيار M ومتطلبات الوحدة."},{"keys":["ما معنى D في BTEC؟","كيف أحقق D؟","كيف احقق D؟","كيف أحقق Distinction؟"],"answer":"D يعني Distinction. لتحقيق D يجب تنفيذ ما يطلبه معيار D تحديدًا وفق صياغته ومواصفة الوحدة، مع تقديم أدلة قوية وتحليل/تقييم أو تبرير نقدي عندما ينص المعيار على ذلك. لا يمكن تحقيق D بمجرد زيادة عدد الصفحات أو تكرار متطلبات P وM؛ يجب تغطية متطلبات معيار D نفسه."},{"keys":["هل M أعلى من P؟"],"answer":"نعم، M (Merit) مستوى أعلى من P (Pass). لكن تحقيق M لا يعني فقط زيادة حجم العمل؛ يجب استيفاء متطلبات معيار M كما وردت في مواصفة الوحدة."},{"keys":["هل D أعلى من M؟"],"answer":"نعم، D (Distinction) مستوى أعلى من M (Merit). تحقيق D يعتمد على متطلبات معيار D وصياغته في مواصفة الوحدة، وليس على عدد الصفحات فقط."},{"keys":["هل كل وحدة فيها P وM وD؟"],"answer":"وجود معايير P وM وD يختلف حسب الوحدة والمواصفة. لا تفترض أن كل وحدة لها نفس البنية؛ راجع مواصفة الوحدة ومعايير التقييم الخاصة بها."},{"keys":["هل طريقة تحقيق M ثابتة بكل الوحدات؟"],"answer":"لا. طريقة تحقيق M ليست قالبًا ثابتًا لكل الوحدات. يجب قراءة نص معيار M في الوحدة نفسها واتباع أفعال التقييم والمتطلبات والأدلة التي يطلبها."},{"keys":["هل طريقة تحقيق D ثابتة بكل الوحدات؟"],"answer":"لا. طريقة تحقيق D ليست قالبًا ثابتًا لكل الوحدات. يجب قراءة نص معيار D في الوحدة نفسها واتباع أفعال التقييم والمتطلبات والأدلة التي يطلبها."},{"keys":["كيف أفهم مستويات التقييم P/M/D؟"],"answer":"P = Pass وهو الحد الأدنى لتحقيق متطلبات المعيار. M = Merit ويتطلب مستوى أعمق وفق صياغة المعيار. D = Distinction مستوى أعلى يتطلب ما تنص عليه المواصفة. لا تفترض أن كل P/M/D لها نفس الطريقة في كل وحدة."},{"keys":["ما معنى Explain في المعيار؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["ما معنى Analyse؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["ما معنى Describe؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["ما معنى Compare؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["ما معنى Assess؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["ما معنى Evaluate؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["كيف أتعامل مع فعل المعيار؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["هل Explain يعني تعريف فقط؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["هل Analyse يحتاج ربط بين الأفكار؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["لماذا أفعال المعايير مهمة؟"],"answer":"Explain يعني وضّح كيف ولماذا واربط السبب بالنتيجة. Analyse يعني فكك الموضوع إلى عناصر واربط بينها وفسر أثرها باستخدام الأدلة. Describe يعني صف الخصائص أو الخطوات. Compare يعني وضح التشابه والاختلاف. Assess/Evaluate يتطلبان مناقشة الأدلة ثم حكمًا مبررًا حسب نص المعيار."},{"keys":["ما الذي قد يجعل طالب BTEC لا ينجح؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل عدم تسليم الواجب مشكلة؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل نقص الأدلة مشكلة؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل الغش يؤثر على النجاح؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل الانتحال مشكلة في BTEC؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل عدم تحقيق المعايير يؤثر؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل التأخر بالتسليم قد يسبب مشكلة؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["كيف أتجنب الرسوب؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل عدم إكمال الوحدة مشكلة؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل متطلبات التقييم الخارجي مهمة؟"],"answer":"من الأمور التي قد تسبب مشكلة: عدم تحقيق المعايير المطلوبة، عدم إكمال الوحدات أو المكونات، تقديم أدلة غير كافية، الغش أو الانتحال، وعدم الالتزام بمتطلبات التقييم عندما تكون موجودة. التفاصيل تختلف حسب المؤهل والمركز وتعليمات السنة."},{"keys":["هل BTEC فيه امتحانات؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["هل BTEC كله واجبات بدون امتحان؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["ما علاقة الامتحان بنظام BTEC؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["هل كل وحدات BTEC لها امتحان؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["هل يوجد تقييم خارجي؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["هل يوجد تقييم داخلي؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["كيف أعرف مكونات التقييم؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["ما المرجع النهائي لمواعيد ومتطلبات الامتحان؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["هل الامتحان وحده يحدد النتيجة؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["هل الامتحان يختلف حسب المؤهل؟"],"answer":"BTEC ليس مجرد امتحانات تقليدية ولا يعني أيضًا عدم وجود أي امتحان. التقييم يعتمد على طبيعة المؤهل والوحدة، وقد توجد مكونات تقييم داخلي أو خارجي. المرجع النهائي هو تعليمات الوزارة ومواصفة مؤهلك."},{"keys":["كيف تكون الدراسة الأكاديمية في BTEC؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["هل BTEC فيه مواد أكاديمية؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["ما الفرق بين الجانب الأكاديمي والمهني؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["هل طالب BTEC يدرس ثقافة مشتركة؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["هل المواد تختلف حسب الصف؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["هل المواد تختلف حسب التخصص؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["كيف أوازن بين الدراسة الأكاديمية والتخصص؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["هل المشاريع جزء من الدراسة؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["هل التطبيق العملي مهم؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["كيف أستفيد من الجانب الأكاديمي؟"],"answer":"الدراسة تجمع بين الجانب الأكاديمي والجانب المهني التطبيقي. الطالب يتعلم المعرفة ثم يطبقها من خلال مشاريع ومهام وأنشطة مرتبطة بالتخصص. المواد والمكونات تختلف حسب الصف والتخصص والخطة الدراسية."},{"keys":["ما الشهادة التي يحصل عليها طالب BTEC؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["هل كل طلاب BTEC يأخذون نفس الشهادة؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["هل الشهادة تعتمد على المستوى؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["هل الشهادة تعتمد على المؤهل؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["هل التخصص يؤثر على المؤهل؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["متى أعرف اسم مؤهلي؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["هل نتيجة الوحدات تؤثر على الشهادة؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["هل الشهادة مرتبطة بالجهة المانحة؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["كيف أتأكد من نوع الشهادة؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["هل شهادة BTEC هي نفسها لكل التخصصات؟"],"answer":"الشهادة التي يحصل عليها الطالب تعتمد على المؤهل والمستوى والمتطلبات التي أكملها. تحقق من مؤهلك المحدد ونتيجتك وتعليمات الوزارة والجهة المانحة."},{"keys":["ما فرص طالب BTEC بعد التخرج؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["ماذا أستطيع أن أفعل بعد BTEC؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["هل BTEC يساعدني في سوق العمل؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["هل المشاريع تفيدني بعد المدرسة؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["هل ملف الأعمال مهم؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["هل المهارات العملية تفيدني؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["هل BTEC مناسب للتدريب المهني؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["هل أستطيع الاستفادة من مشاريعي مستقبلًا؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["ما فائدة Portfolio لطالب BTEC؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["كيف أجهز نفسي لسوق العمل؟"],"answer":"الفرص قد تشمل مواصلة التعليم العالي، دخول سوق العمل، بناء ملف أعمال، التدريب والخبرة، وريادة الأعمال. القبول الجامعي والاعتراف خارج الأردن لهما شروط تختلف حسب الجهة."},{"keys":["هل أقدر أكمل جامعة بعد BTEC؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["هل BTEC يسمح بالتعليم العالي؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["هل كل الجامعات تقبل BTEC؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["كيف أعرف شروط الجامعة بعد BTEC؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["هل شروط القبول تختلف حسب التخصص؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["هل شروط القبول تختلف حسب الجامعة؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["هل المؤهل يؤثر على القبول الجامعي؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["هل يجب أن أتحقق من شروط السنة؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["هل BTEC يمنعني من الجامعة؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."},{"keys":["ما الذي أراجعه قبل التقديم للجامعة؟"],"answer":"يمكن لـBTEC أن يدعم التقدم للتعليم العالي، لكن القبول يعتمد على شروط الجامعة والجهة الرسمية والتخصص والسنة والمؤهل الذي حصلت عليه."}];
-function normalize(s){return String(s||"").toLowerCase().replace(/[ًٌٍَُِّْـ]/g,"").replace(/[؟?!.,،]/g," ").replace(/أ|إ|آ/g,"ا").replace(/ة/g,"ه").trim()}
-const messages=document.getElementById("chatMessages"),form=document.getElementById("chatForm"),input=document.getElementById("userQuestion"),typing=document.getElementById("typing");
-let points=Number(localStorage.getItem("btecjo-points")||0);const pointsEl=document.getElementById("points");if(pointsEl)pointsEl.textContent=points;
-function normalizeAI(s){return String(s||"").toLowerCase().replace(/[إأآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/[ًٌٍَُِّْـ]/g,"").replace(/[^\u0600-\u06FFa-z0-9\s]/gi," ").replace(/\s+/g," ").trim()}
-const aiStop=new Set(["ما","هو","هي","هل","كيف","شو","ايش","عن","في","من","على","الى","و","او","ال","هذا","هذه","ذلك"]);
-function aiTokens(s){return normalizeAI(s).split(" ").filter(x=>x.length>1&&!aiStop.has(x))}
-function detectCriterionLevel(q){
- const n=normalizeAI(q);
- if(/\\b(m|merit)\\s*\\d*\\b/.test(n) || /ميرت|ميريت|جداره|الجداره/.test(n)) return "M";
- if(/\\b(d|distinction)\\s*\\d*\\b/.test(n) || /ديستنكشن|دستنكشن|تميز|التميز/.test(n)) return "D";
- if(/\\b(p|pass)\\s*\\d*\\b/.test(n) || /باس|اجتياز/.test(n)) return "P";
- return null;
-}
-function criterionFallback(level){
- if(level==="P") return "لتحقيق P (Pass): اقرأ نص المعيار نفسه حرفيًا، حدّد جميع أجزاء المطلوب، نفّذها، وقدّم أدلة واضحة تربط كل دليل بالجزء المطلوب. لا يكفي عدد الصفحات أو الوصف العام وحده.";
- if(level==="M") return "لتحقيق M (Merit): لا تكرر متطلبات P فقط. اقرأ نص معيار M نفسه ومواصفة الوحدة، ثم نفّذ فعل المعيار بالمستوى المطلوب مثل التحليل أو التفسير أو المقارنة أو التبرير إذا نص المعيار عليه. اربط استنتاجاتك بالأدلة، وبيّن كيف ولماذا تصل إلى النتيجة المطلوبة. المعيار المحدد هو المرجع النهائي، وليس عدد الصفحات.";
- if(level==="D") return "لتحقيق D (Distinction): لا يكفي تكرار P وM أو زيادة عدد الصفحات. اقرأ نص معيار D نفسه ومواصفة الوحدة، ونفّذ مستوى التفكير المطلوب مثل التقييم أو الحكم المبرر أو التبرير النقدي إذا نص المعيار عليه. استخدم أدلة مناسبة، اربطها بتحليلك، ووضّح سبب استنتاجك وفق صياغة المعيار. المعيار المحدد هو المرجع النهائي.";
- return null;
-}
-function localMatch(q){
- const requestedLevel=detectCriterionLevel(q);
- const a=aiTokens(q);if(!a.length && !requestedLevel)return null;
- // Generic "كيف أحقق P/M/D؟" must never be matched against another level.
- if(requestedLevel && /تحقق|حقق|تحقيق|معيار|مطلوب|اكتب|اعمل|اسوي/.test(normalizeAI(q))){
-   for(const item of (window.BTEC_KNOWLEDGE||[])){
-    for(const candidate of (item.keys||[])){
-     if(detectCriterionLevel(candidate)===requestedLevel && normalizeAI(candidate)===normalizeAI(q)){
-      return {item,matchedQuestion:candidate,score:99};
-     }
+document.addEventListener("DOMContentLoaded", () => {
+  const config = window.btecAIConfig || {};
+
+  const apiBaseUrl =
+    String(config.apiBaseUrl || window.location.origin)
+      .replace(/\/+$/, "");
+
+  const timeoutMs =
+    Number(config.timeoutMs || 30000);
+
+  const form =
+    document.getElementById("chatForm");
+
+  const input =
+    document.getElementById("userQuestion");
+
+  const messages =
+    document.getElementById("chatMessages");
+
+  const typing =
+    document.getElementById("typing");
+
+  const clearChat =
+    document.getElementById("clearChat");
+
+  const pointsEl =
+    document.getElementById("points");
+
+  if (!form || !input || !messages) {
+    console.error(
+      "BTEC AI: chatForm/userQuestion/chatMessages not found"
+    );
+
+    return;
+  }
+
+  /* =========================
+     Points
+  ========================= */
+
+  let points =
+    Number(
+      localStorage.getItem("btecjo-points") || 0
+    );
+
+  function updatePoints() {
+    if (pointsEl) {
+      pointsEl.textContent = String(points);
     }
-   }
-   return {item:{answer:criterionFallback(requestedLevel)},matchedQuestion:`${requestedLevel} level fallback`,score:98};
- }
- let best=null,bestScore=0;
- for(const item of (window.BTEC_KNOWLEDGE||[])) for(const candidate of (item.keys||[])){
-  const b=new Set(aiTokens(candidate));let hit=0;
-  for(const t of a){if(b.has(t))hit+=2;else for(const x of b){if(x.includes(t)||t.includes(x)){hit+=.7;break}}}
-  const exact=normalizeAI(q)===normalizeAI(candidate)?5:0;const s=hit/a.length+exact;
-  if(s>bestScore){bestScore=s;best={item,matchedQuestion:candidate}}
- }
- return bestScore>=.48?{...best,score:bestScore}:null;
-}
-function addMessage(text,user=false,source=""){
- const wrap=document.createElement("div");wrap.className="message "+(user?"user":"bot");
- wrap.innerHTML=user?`<div class="mini-avatar"><i class="fa-solid fa-user"></i></div><div><span class="sender">أنت</span><p></p></div>`:`<div class="mini-avatar"><i class="fa-solid fa-robot"></i></div><div><span class="sender">BTEC AI</span>${source?`<small class="ai-source">${source}</small>`:""}<p></p></div>`;
- wrap.querySelector("p").textContent=text;messages.appendChild(wrap);messages.scrollTop=messages.scrollHeight;return wrap.querySelector("p");
-}
-async function backendAnswer(q){
- const cfg=window.btecAIConfig||{};const base=(cfg.apiBaseUrl||"").replace(/\/$/,"");
- try{const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(), cfg.timeoutMs||30000); const r=await fetch(base+"/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q}),signal:controller.signal}); clearTimeout(timer);const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"backend error");return d}catch(e){return{ok:false,error:e.message}}
-}
-async function ask(q){
- if(!q)return;addMessage(q,true);typing?.classList.remove("hidden");
- const local=localMatch(q);
- if(local){setTimeout(()=>{typing?.classList.add("hidden");addMessage(local.item.answer,false,"قاعدة المعرفة الداخلية");points+=5;localStorage.setItem("btecjo-points",points);if(pointsEl)pointsEl.textContent=points},350);return}
- const placeholder=addMessage("جاري البحث في المصادر والذكاء الاصطناعي…",false,"بحث + AI");const result=await backendAnswer(q);typing?.classList.add("hidden");
- if(result.ok){
-  placeholder.textContent=result.answer||"لم يتم العثور على إجابة.";
-  const source=placeholder.parentElement.querySelector(".ai-source");
-  if(source)source.textContent=result.source||"البحث + AI";
-  if(result.searchedWeb && Array.isArray(result.sources) && result.sources.length){
-    const box=document.createElement("div");
-    box.className="ai-web-sources";
-    const title=document.createElement("strong");
-    title.textContent="مصادر البحث:";
+
+    localStorage.setItem(
+      "btecjo-points",
+      String(points)
+    );
+  }
+
+  /* =========================
+     Add message
+  ========================= */
+
+  function addMessage(
+    text,
+    user = false,
+    source = ""
+  ) {
+    const wrap =
+      document.createElement("div");
+
+    wrap.className =
+      `message ${user ? "user" : "bot"}`;
+
+    const avatar =
+      document.createElement("div");
+
+    avatar.className =
+      "mini-avatar";
+
+    avatar.innerHTML =
+      user
+        ? '<i class="fa-solid fa-user"></i>'
+        : '<i class="fa-solid fa-robot"></i>';
+
+    const content =
+      document.createElement("div");
+
+    const sender =
+      document.createElement("span");
+
+    sender.className =
+      "sender";
+
+    sender.textContent =
+      user ? "أنت" : "BTEC AI";
+
+    const paragraph =
+      document.createElement("p");
+
+    paragraph.textContent =
+      String(text || "");
+
+    content.appendChild(sender);
+
+    if (source && !user) {
+      const sourceEl =
+        document.createElement("small");
+
+      sourceEl.className =
+        "ai-source";
+
+      sourceEl.textContent =
+        source;
+
+      content.appendChild(sourceEl);
+    }
+
+    content.appendChild(paragraph);
+
+    wrap.appendChild(avatar);
+    wrap.appendChild(content);
+
+    messages.appendChild(wrap);
+
+    messages.scrollTop =
+      messages.scrollHeight;
+
+    return {
+      wrap,
+      paragraph,
+      content
+    };
+  }
+
+  /* =========================
+     Show typing
+  ========================= */
+
+  function setTyping(show) {
+    if (!typing) return;
+
+    typing.classList.toggle(
+      "hidden",
+      !show
+    );
+  }
+
+  /* =========================
+     Sources
+  ========================= */
+
+  function addSources(
+    content,
+    sources
+  ) {
+    if (
+      !Array.isArray(sources) ||
+      sources.length === 0
+    ) {
+      return;
+    }
+
+    const box =
+      document.createElement("div");
+
+    box.className =
+      "ai-web-sources";
+
+    const title =
+      document.createElement("strong");
+
+    title.textContent =
+      "مصادر البحث:";
+
     box.appendChild(title);
-    result.sources.forEach((s,i)=>{
-      const link=document.createElement("a");
-      link.href=s.url; link.target="_blank"; link.rel="noopener noreferrer";
-      link.textContent=`${i+1}. ${s.title||s.url}`;
-      box.appendChild(link);
+
+    sources
+      .filter(source => source && source.url)
+      .slice(0, 8)
+      .forEach((source, index) => {
+        const link =
+          document.createElement("a");
+
+        link.href =
+          source.url;
+
+        link.target =
+          "_blank";
+
+        link.rel =
+          "noopener noreferrer";
+
+        link.textContent =
+          `${index + 1}. ${
+            source.title || source.url
+          }`;
+
+        box.appendChild(link);
+      });
+
+    content.appendChild(box);
+  }
+
+  /* =========================
+     Ask backend
+  ========================= */
+
+  async function askBackend(question) {
+    const controller =
+      new AbortController();
+
+    const timer =
+      setTimeout(
+        () => controller.abort(),
+        timeoutMs
+      );
+
+    try {
+      const response =
+        await fetch(
+          `${apiBaseUrl}/api/ask`,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json",
+
+              Accept:
+                "application/json"
+            },
+
+            body: JSON.stringify({
+              question
+            }),
+
+            signal:
+              controller.signal,
+
+            cache:
+              "no-store"
+          }
+        );
+
+      const data =
+        await response
+          .json()
+          .catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(
+          data.error ||
+          `HTTP ${response.status}`
+        );
+      }
+
+      return data;
+
+    } catch (error) {
+      if (
+        error?.name === "AbortError"
+      ) {
+        return {
+          ok: false,
+          error:
+            "انتهت مهلة الاتصال بالـAI. جرّب مرة ثانية."
+        };
+      }
+
+      return {
+        ok: false,
+        error:
+          error?.message ||
+          "تعذر الاتصال بخدمة BTEC JO AI."
+      };
+
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  /* =========================
+     Main ask
+  ========================= */
+
+  async function ask(question) {
+    const text =
+      String(question || "")
+        .trim();
+
+    if (!text) {
+      return;
+    }
+
+    addMessage(
+      text,
+      true
+    );
+
+    input.value = "";
+
+    setTyping(true);
+
+    const bot =
+      addMessage(
+        "جاري تجهيز الجواب...",
+        false,
+        "بحث + AI"
+      );
+
+    try {
+      const result =
+        await askBackend(text);
+
+      if (result?.ok) {
+        bot.paragraph.textContent =
+          result.answer ||
+          "لم يتم العثور على إجابة.";
+
+        const sourceEl =
+          bot.content.querySelector(
+            ".ai-source"
+          );
+
+        if (sourceEl) {
+          sourceEl.textContent =
+            result.source ||
+            "BTEC AI";
+        }
+
+        if (
+          result.searchedWeb &&
+          Array.isArray(result.sources)
+        ) {
+          addSources(
+            bot.content,
+            result.sources
+          );
+        }
+      } else {
+        bot.paragraph.textContent =
+          result?.error ||
+          "تعذر الاتصال بخدمة BTEC JO AI حاليًا.";
+      }
+
+      points += 5;
+      updatePoints();
+
+    } catch (error) {
+      console.error(
+        "BTEC AI:",
+        error
+      );
+
+      bot.paragraph.textContent =
+        "صار خطأ أثناء إرسال السؤال. جرّب مرة ثانية.";
+    } finally {
+      setTyping(false);
+    }
+  }
+
+  /* =========================
+     Form submit
+  ========================= */
+
+  form.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
+
+      const question =
+        input.value.trim();
+
+      if (!question) {
+        return;
+      }
+
+      ask(question);
+    }
+  );
+
+  /* =========================
+     Ready questions
+  ========================= */
+
+  document
+    .querySelectorAll("[data-q]")
+    .forEach((button) => {
+      button.addEventListener(
+        "click",
+        (event) => {
+          event.preventDefault();
+
+          const question =
+            button.dataset.q;
+
+          if (!question) {
+            return;
+          }
+
+          ask(question);
+        }
+      );
     });
-    placeholder.parentElement.appendChild(box);
-  }
-}else{
-  placeholder.textContent=result.error||"تعذر الاتصال بخدمة BTEC JO AI حاليًا. تأكد أن الـBackend يعمل وأن رابط API صحيح.";
-}
- points+=5;localStorage.setItem("btecjo-points",points);if(pointsEl)pointsEl.textContent=points;
-}
-document.querySelectorAll("[data-q]").forEach(b=>b.addEventListener("click",()=>ask(b.dataset.q)));
-form?.addEventListener("submit",e=>{e.preventDefault();const q=input.value.trim();input.value="";ask(q)});
-document.getElementById("clearChat")?.addEventListener("click",()=>{messages.innerHTML="";addMessage("تم مسح المحادثة. اسألني من جديد عن BTEC 👋")});
 
-const quickQuiz = document.getElementById("quickQuiz");
-const quizStart = document.getElementById("quizStart");
-const quizQuestion = document.getElementById("quizQuestion");
-const quizAnswers = document.getElementById("quizAnswers");
-const quizProgress = document.getElementById("quizProgress");
-const quizResult = document.getElementById("quizResult");
-const quizCounter = document.getElementById("quizCounter");
-const quizClose = document.getElementById("quizClose");
+  /* =========================
+     Clear chat
+  ========================= */
 
-let quizState = {active:false, asked:[], current:null, score:0, answered:0, locked:false, seedTopics:[]};
+  clearChat?.addEventListener(
+    "click",
+    () => {
+      messages.innerHTML = "";
 
-function topicFromConversation(){
-  const text = [...document.querySelectorAll(".message.user .bubble")].map(x=>x.textContent).join(" ").toLowerCase();
-  const topics = [];
-  if(/p1|pass|باس|نجاح|معيار/.test(text)) topics.push("P");
-  if(/m1|merit|ميرت|شرح|explain/.test(text)) topics.push("M");
-  if(/d1|distinction|دستنكشن|تقييم|evaluate|assess/.test(text)) topics.push("D");
-  if(/واجب|assignment|learning aim/.test(text)) topics.push("assignment");
-  if(/دليل|evidence|اثبات/.test(text)) topics.push("evidence");
-  if(/رسب|رسوب|فشل|غش/.test(text)) topics.push("failure");
-  return [...new Set(topics)];
-}
+      addMessage(
+        "أهلًا 👋 أنا مساعد BTEC JO. اختار سؤال من القائمة أو اكتب سؤالك تحت. رح أجاوب فقط ضمن مواضيع نظام BTEC."
+      );
+    }
+  );
 
-function openQuiz(){
-  if(quizState.locked) return;
-  quizState = {active:true, asked:[], current:null, score:0, answered:0, locked:false, seedTopics:topicFromConversation()};
-  quickQuiz?.classList.add("show");
-  quizResult.textContent = "";
-  renderQuizQuestion();
-}
+  /* =========================
+     Global helper
+  ========================= */
 
-function chooseQuestion(){
-  const preferred = quizState.seedTopics.filter(t=>!quizState.asked.includes(t));
-  const pool = quizQuestions.filter(x=>!quizState.asked.includes(x.id));
-  let q = preferred.length
-    ? quizQuestions.find(x=>x.topic===preferred[0] && !quizState.asked.includes(x.id))
-    : pool[Math.floor(Math.random()*pool.length)];
-  if(!q) q = pool[0];
-  quizState.current=q;
-  quizState.asked.push(q.id);
-}
+  window.BTECAsk = ask;
 
-function renderQuizQuestion(){
-  if(quizState.answered>=3){finishQuiz(); return;}
-  chooseQuestion();
-  const q=quizState.current;
-  quizQuestion.textContent=q.q;
-  quizAnswers.innerHTML="";
-  quizCounter.textContent=`السؤال ${quizState.answered+1} من 3`;
-  quizProgress.style.width=`${(quizState.answered/3)*100}%`;
-  q.a.forEach((answer,i)=>{
-    const btn=document.createElement("button");
-    btn.type="button";
-    btn.className="quiz-answer";
-    btn.textContent=answer;
-    btn.addEventListener("click",()=>answerQuiz(i));
-    quizAnswers.appendChild(btn);
-  });
-}
+  window.addEventListener(
+    "btecjo:ask",
+    (event) => {
+      const question =
+        event?.detail?.question;
 
-function answerQuiz(index){
-  if(quizState.locked || !quizState.active) return;
-  const q=quizState.current;
-  const buttons=[...quizAnswers.querySelectorAll("button")];
-  buttons.forEach(b=>b.disabled=true);
-  buttons[q.correct].classList.add("correct");
-  if(index===q.correct){
-    quizState.score++;
-    quizResult.textContent="✅ إجابة صحيحة";
-  }else{
-    buttons[index].classList.add("wrong");
-    quizResult.textContent=`❌ الإجابة الصحيحة: ${q.a[q.correct]}`;
-  }
-  quizState.answered++;
-  quizProgress.style.width=`${(quizState.answered/3)*100}%`;
-  setTimeout(()=>{
-    if(quizState.answered>=3) finishQuiz();
-    else {quizResult.textContent=""; renderQuizQuestion();}
-  },900);
-}
+      if (question) {
+        ask(question);
+      }
+    }
+  );
 
-function finishQuiz(){
-  quizState.active=false;
-  quizState.locked=true;
-  quizQuestion.textContent="انتهى الاختبار السريع 🎉";
-  quizAnswers.innerHTML="";
-  quizCounter.textContent="3 / 3 — مغلق";
-  quizProgress.style.width="100%";
-  const s=quizState.score;
-  quizResult.innerHTML=`<strong>نتيجتك: ${s} / 3</strong><br>${s===3?"ممتاز! واضح إنك فاهم الأساسيات 👏":s===2?"جيد جدًا، راجع النقطة التي أخطأت فيها.":"راجع قسم المعايير والواجبات قبل المحاولة القادمة."}<br><small>تم إغلاق الاختبار. لا يمكن اختيار إجابات أخرى في هذه الجولة.</small>`;
-  quizClose.textContent="إغلاق الاختبار";
-  quizClose.onclick=()=>quickQuiz.classList.remove("show");
-}
-
-quizStart?.addEventListener("click",openQuiz);
-quizClose?.addEventListener("click",()=>quickQuiz?.classList.remove("show"));
-
-window.addEventListener("btecjo:ask",()=>{
-  // لا يفتح الاختبار مباشرة؛ يبدأ حسب موضوع المحادثة عندما يضغط الطالب زر الاختبار.
-});
+  updatePoints();
 });

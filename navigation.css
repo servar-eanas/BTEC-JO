@@ -60,3 +60,18 @@ body.dark .btec-sidebar .home-menu{background:#121b2d;border-color:#26334b;box-s
 body.dark .btec-sidebar .side-label,body.dark .btec-sidebar .side-note{color:#9ba9c3}
 body.dark .btec-sidebar .side-bottom{border-color:#26334b}
 body.dark .btec-sidebar a.active,body.dark .btec-sidebar a:hover,body.dark .btec-sidebar button:hover{background:#1b2a4c}
+
+
+/* ===== BTEC JO STABILITY FIXES ===== */
+.ai-float{position:fixed;right:20px;bottom:20px;z-index:10001;display:flex;align-items:center;gap:9px;padding:11px 14px;border-radius:16px;background:#315eea;color:#fff!important;text-decoration:none;box-shadow:0 12px 30px rgba(49,94,234,.28);font-weight:900;font-size:12px;transition:transform .2s ease,box-shadow .2s ease}
+.ai-float:hover{transform:translateY(-3px);box-shadow:0 16px 35px rgba(49,94,234,.38)}
+.ai-float i{font-size:18px}
+#topButton{display:grid!important;place-items:center;opacity:.92;transition:transform .2s ease,opacity .2s ease;left:20px;bottom:20px}
+#topButton:hover{transform:translateY(-3px);opacity:1}
+.ai-page .mini-avatar,.ai-page .ai-avatar{display:grid;place-items:center}
+.ai-page .mini-avatar i,.ai-page .ai-avatar i{display:block!important;visibility:visible!important;opacity:1!important}
+@media(max-width:800px){
+  .ai-float{right:14px;bottom:82px;width:48px;height:48px;padding:0;justify-content:center;border-radius:15px}
+  .ai-float span{display:none}
+  #topButton{left:14px;bottom:82px;width:44px;height:44px}
+}

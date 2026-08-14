@@ -41,7 +41,7 @@ const top=document.getElementById("topButton"), progress=document.getElementById
 window.addEventListener("scroll",()=>{
  const max=document.documentElement.scrollHeight-innerHeight;
  if(progress)progress.style.width=(max?scrollY/max*100:0)+"%";
- if(top)top.style.display=scrollY>450?"grid":"none";
+ if(top)top.style.display="grid";
 });
 top?.addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
 

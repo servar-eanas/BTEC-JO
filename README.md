@@ -1,24 +1,17 @@
-# BTEC JO — Full Stack AI
+BTEC JO Smart AI backend
+=========================
+الواجهة الأمامية لا تضع API Key داخل JavaScript.
+أنشئ endpoint POST /api/ask يعيد JSON مثل:
+{"answer":"..."}
+ثم ضع رابط endpoint في ai.html داخل window.btecAIConfig.aiEndpoint.
 
-## Local
-1. Install Node.js.
-2. Copy `.env.example` to `.env`.
-3. Put your OpenAI API key in `.env`.
-4. Run `npm install`.
-5. Run `npm start`.
-6. Open `http://localhost:10000`.
+يمكن أيضًا إنشاء endpoint للبحث الخارجي وإرجاع:
+{"answer":"..."}
+ووضعه في webEndpoint.
 
-## AI flow
-Internal 100-question database -> if no match -> Backend -> OpenAI Responses API + web search -> answer.
-The API key is never placed in frontend JavaScript.
+الترتيب في الموقع:
+1) قاعدة المعرفة الداخلية (100 سؤال)
+2) webEndpoint إن تم ربطه
+3) aiEndpoint إن تم ربطه
 
-## Render
-Create a Web Service from this repo. Build: `npm install`; Start: `npm start`; add `OPENAI_API_KEY` in Environment Variables.
-
-
-## Production notes
-- Do not commit `.env` or an OpenAI API key.
-- On Render set `OPENAI_API_KEY` to a real ASCII OpenAI API key and keep `OPENAI_MODEL=gpt-5-mini`.
-- The backend validates the key before constructing the OpenAI client, preventing Unicode placeholder values from causing the Undici ByteString error.
-- Web search is performed server-side so the API key is never exposed to visitors.
-- PWA files, sitemap and robots.txt are served from `BTEC JO/`.
+مهم: لا تضع مفتاح OpenAI أو أي مفتاح API داخل ملفات الموقع المنشورة.
